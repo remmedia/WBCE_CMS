@@ -13,6 +13,8 @@
  */
 
 require '../../config.php';
+require_once WB_PATH . '/framework/i18n/init.php';
+require_once WB_PATH . '/framework/AccessManager/UserManager.php';
 
 // Only respond to htmx requests
 if (empty($_SERVER['HTTP_HX_REQUEST'])) {

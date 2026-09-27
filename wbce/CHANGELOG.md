@@ -74,6 +74,15 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.209
+
+- Korrigiert das Rendern des Benutzerformulars für moderne Zeitzonenbezeichner wie `Europe/Berlin`; das Öffnen und Anzeigen eines Benutzers endet nicht mehr mit HTTP 500.
+- Lädt die benötigten Klassen in den eigenständigen Benutzer- und Gruppen-AJAX-Endpunkten zuverlässig.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.208
 
 - Öffnet die Bearbeitungsformulare für Benutzer und Gruppen über die interne Kennung. Dadurch ist das Anzeigen und Bearbeiten unabhängig vom fehlerhaften Legacy-IDKEY-Cache möglich; jede Seite prüft weiterhin die jeweilige Backend-Berechtigung.

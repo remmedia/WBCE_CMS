@@ -6,6 +6,9 @@
  */
 
 require '../../config.php';
+require_once WB_PATH . '/framework/i18n/init.php';
+require_once WB_PATH . '/framework/Alerts.php';
+require_once WB_PATH . '/framework/AccessManager/UserManager.php';
 
 $action = $_GET['do'] ?? '';
 $admin  = new Admin('Access', 'users_modify', false);

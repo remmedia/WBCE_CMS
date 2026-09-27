@@ -3,7 +3,7 @@
   "type": "cms",
   "slug": "wbce-cms",
   "name": "WBCE CMS",
-  "version": "1.7.0-dev.208",
+  "version": "1.7.0-dev.209",
   "description": "WBCE CMS-Kernpaket für kontrollierte Systemupdates über den Updater.",
   "platform": "1.7.0",
   "installer_entry": "install/index.php",

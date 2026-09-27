@@ -166,7 +166,7 @@
                                 <select name="timezone" id="timezone">
                                     <option value="-20" disabled>{{ L_('TEXT:PLEASE_SELECT') }}&mldr;</option>
                                     {% for rec in TIME_ZONES %}
-                                        <option value="{{ rec.VALUE }}"{% if rec.VALUE == (user.timezone|default(0)) / 60 / 60 %} selected{% endif %}{% if rec.SELECTED == true %} selected{% endif %}>{{ rec.NAME }}</option>
+                                        <option value="{{ rec.VALUE }}"{% if rec.VALUE == user.timezone|default('') %} selected{% endif %}{% if rec.SELECTED == true %} selected{% endif %}>{{ rec.NAME }}</option>
                                     {% endfor %}
                                 </select>
                             </div>

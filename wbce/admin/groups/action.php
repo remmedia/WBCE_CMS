@@ -6,6 +6,10 @@
  */
 
 require '../../config.php';
+require_once WB_PATH . '/framework/i18n/init.php';
+require_once WB_PATH . '/framework/Alerts.php';
+require_once WB_PATH . '/framework/AccessManager/GroupManager.php';
+require_once WB_PATH . '/framework/AccessManager/PermissionManager.php';
 
 $action  = $_GET['do'] ?? 'delete';
 $admin   = new Admin('Access', ($action === 'getrow') ? 'groups_view' : 'groups_delete', false);
