@@ -1,0 +1,61 @@
+{# WBCE 1.7 login chrome. WBCE 1.6.8 continues to use login.htt. #}
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE }}">
+<head>
+    <title>{% block title %}{{ L_('TEXT:LOGIN') }}{% endblock %}</title>
+    <meta charset="{{ CHARSET }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-language" content="{{ LANGUAGE }}">
+    <link rel="icon" href="{{ THEME_URL }}/images/favicons/favicon.ico" sizes="any">
+    <link rel="icon" type="image/svg+xml" href="{{ THEME_URL }}/images/favicons/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ THEME_URL }}/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ THEME_URL }}/images/favicons/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ THEME_URL }}/images/favicons/apple-touch-icon.png">
+    <link rel="mask-icon" href="{{ THEME_URL }}/images/favicons/safari-pinned-tab.svg" color="#1d4ed8">
+    <link rel="manifest" href="{{ THEME_URL }}/images/favicons/site.webmanifest">
+    <meta name="theme-color" content="#2563eb">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="WBCE CMS">
+    <meta name="msapplication-TileColor" content="#2563eb">
+    <meta name="msapplication-config" content="{{ THEME_URL }}/images/favicons/browserconfig.xml">
+    <link rel="stylesheet" href="{{ THEME_URL }}/css/style.min.css?v1.0.6">
+    <link rel="stylesheet" href="{{ THEME_URL }}/css/admin-layout.css?v1.0.6">
+    <link rel="stylesheet" href="{{ THEME_URL }}/css/media-cms.css?v1.0.32">
+    <link rel="stylesheet" href="{{ WB_URL }}/templates/theme_fallbacks/css/cp_chrome.css">
+    <link rel="stylesheet" href="{{ WB_URL }}/templates/theme_fallbacks/css/cp_alerts.css">
+    <script src="{{ WB_URL }}/include/jquery/jquery-min.js"></script>
+</head>
+<body class="fixed-nav prepage page_login"{% block body_attrs %}{% endblock %}>
+    <main id="main-content">
+        <div class="container-fluid">
+            <div id="prepage">
+                <div class="row">
+                    <div class="col-md-6 mx-md-auto col-lg-4">
+                        <header id="prepageHeader">
+                            <span class="brand">
+                                <span class="media-cms-wordmark media-cms-wordmark-login" aria-label="WBCE CMS"><strong>WBCE</strong><span>CMS</span></span>
+                            </span>
+                        </header>
+                    </div>
+                </div>
+                <div id="loginPage">
+                    <div class="row">
+                        <div class="col-md-6 mx-md-auto col-lg-4">
+                            <section class="card">
+                                <h1 class="card-header media-cms-login-heading">{% block page_heading %}{{ L_('TEXT:LOGIN') }}{% endblock %}</h1>
+                                <div class="card-body">
+                                    {% block login_content %}{% endblock %}
+                                </div>
+                                <footer class="card-footer text-right">
+                                    <a class="media-cms-login-home" href="{{ WB_URL }}/"><i class="fa fa-fw fa-desktop" aria-hidden="true"></i>{{ L_('TEXT:HOME') }}</a>
+                                </footer>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

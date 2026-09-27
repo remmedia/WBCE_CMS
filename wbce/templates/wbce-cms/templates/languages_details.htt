@@ -1,0 +1,25 @@
+<!-- BEGIN main_block -->
+
+<div class="wbce-section-shell wbce-addons-subpage">
+
+<header class="wbce-section-hero"><i class="fa fa-language"></i><div><h2>{HEADING_LANGUAGE_DETAILS}</h2><p>Informationen zur ausgewählten Sprache.</p></div>
+    <div class="headline-link"> <i class="fa fa-reply"> <a href="#" onclick="window.location = 'index.php';"> {TEXT_BACK} </a> </i> </div>
+</header>
+
+<div class="content-box info-box">
+    <div class="fg3 bold">{TEXT_NAME}:</div>
+    <div class="fg8">{NAME}</div>
+    <div class="fg1 right"><img src="{WB_URL}/languages/{CODE}.png"></div>
+    <hr class="fg12 nom">
+    <div class="fg3 bold">{TEXT_CODE}:</div>
+    <div class="fg9">{CODE}</div>
+    <hr class="fg12 nom">
+    <div class="fg3 bold">{TEXT_AUTHOR}:</div>
+    <div class="fg9">{AUTHOR}</div>
+    <hr class="fg12 nom">
+    <div class="fg3 bold">{TEXT_VERSION}:</div>
+    <div class="fg9">{VERSION}</div>
+</div>
+
+</div>
+<!-- END main_block -->

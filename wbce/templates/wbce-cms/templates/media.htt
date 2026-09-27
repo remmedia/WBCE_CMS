@@ -1,0 +1,145 @@
+<!-- BEGIN main_block -->
+<div id="mediaPage">
+    <div class="row">
+        <div class="col-xl-8">
+            <div class="card">
+                <h4 class="card-header">
+                    {HEADING_BROWSE_MEDIA}
+                </h4>
+                <iframe name="mediaBrowser" scrolling="no" id="mediaBrowser" src="browse.php" frameborder="0"></iframe>
+                <div class="card-body">
+                    <hr />
+                    <span class="{DISPLAY_SETTINGS} pull-right">
+                        <a href="setparameter.php" target="mediaBrowser" class="btn btn-outline-light">
+                            <i class="fa fa-fw fa-cog"></i> {CHANGE_SETTINGS}
+                        </a>
+                        <a href="browse.php?dir={CURRENT_DIR}" target="mediaBrowser" class="btn btn-outline-light">
+                            <i class="fa fa-fw fa-refresh"></i>  {TEXT_RELOAD}
+                        </a>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-4">
+            <div class="card">
+                <h4 class="card-header">
+                    {HEADING_UPLOAD_FILES}
+                </h4>
+                <div class="card-body">
+                    <form name="upload" action="upload.php" method="post" enctype="multipart/form-data" class="{DISPLAY_UPLOAD}">
+                        {FTAN}
+                        <div class="form-group">
+                            <label>
+                                {TEXT_TARGET_FOLDER}
+                            </label>
+
+                            <select name="target" id="uploadTargetSelect" style="width: 100%;">
+                                <option value="{MEDIA_DIRECTORY}{HOME_DIRECTORY}" selected="selected">{MEDIA_DIRECTORY}{HOME_DIRECTORY}</option>
+                                <!-- BEGIN dir_list_block --><option value="{NAME}">{NAME}</option><!-- END dir_list_block -->
+                            </select>
+
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="unzip" id="unzipCheckbox" /> {TEXT_UNZIP_FILE}
+                            </label>
+                        </div>
+                        <div class="checkbox" style="display: none">
+                            <label>
+                                <input type="checkbox" name="delzip" id="delzipCheckbox" /> {TEXT_DELETE_ZIP}
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="file1" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="file2" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="file3" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input type="file" name="file4" class="form-control" />
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="overwrite" id="overwrite" value="yes" /> {TEXT_OVERWRITE_EXISTING} {TEXT_FILES}
+                            </label>
+                        </div>
+                        <button class="btn btn-primary" type="submit" name="submit">
+                            <i class="fa fa-fw fa-upload"></i> {TEXT_UPLOAD_FILES}
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="card">
+                <h4 class="card-header">
+                    {HEADING_CREATE_FOLDER}
+                </h4>
+                <div class="card-body">
+                    <form name="create" action="create.php" method="post" class="{DISPLAY_CREATE}">
+                        {FTAN}
+                        <div class="form-group">
+                            <label>
+                                {TEXT_NAME}
+                            </label>
+                            <input type="text" name="name" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                {TEXT_TARGET_FOLDER}
+                            </label>
+                            <select id="createTargetSelect" name="target" style="width: 100%;">
+                                <option value="{MEDIA_DIRECTORY}{HOME_DIRECTORY}" selected="selected">{MEDIA_DIRECTORY}{HOME_DIRECTORY}</option>
+                                <!-- BEGIN dir_list_block -->
+                                <option value="{NAME}">{NAME} </option>
+                                <!-- END dir_list_block -->
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" type="submit" name="submit">
+                            <i class="fa fa-fw fa-plus"></i> {TEXT_CREATE_FOLDER}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div><!-- /.col-lg-4.col-lg-pull-8 -->
+    </div><!-- /.row -->
+</div><!-- /#mediaPage -->
+
+<!-- Custom Javascript -->
+<script>
+    $('#unzipCheckbox').on('change', function () {
+        var $delzipCheckbox = $('#delzipCheckbox');
+        if ($(this).prop('checked')) {
+            $delzipCheckbox.parents('.checkbox').fadeIn();
+        } else {
+            $delzipCheckbox.parents('.checkbox').fadeOut(function () {
+                $delzipCheckbox.prop('checked', false);
+            });
+        }
+    });
+
+    $('#uploadTargetSelect').on('change', function () {
+        if ($(this).data('silent') == 0) {
+            var url = 'browse.php?dir=' + this.value.substr(6, 100);
+            $('#mediaBrowser').prop('src', url);
+        }
+    });
+
+    $(function () {
+        var $mediaBrowser = $('#mediaBrowser');
+
+        $mediaBrowser.on('load reload', function () {
+            // Reset height first to 0 to get the real offset height of contentWindow
+            this.style.height = 0;
+            this.style.height = this.contentWindow.document.body.offsetHeight + 'px';
+        }).trigger('reload');
+
+        $(window).on('resize', function () {
+            $mediaBrowser.trigger('reload');
+        });
+    });
+</script>
+<!-- END main_block -->

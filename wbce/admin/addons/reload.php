@@ -1,0 +1,126 @@
+<?php
+/**
+ * WBCE CMS
+ * Way Better Content Editing.
+ * Visit https://wbce.org to learn more and to join the community.
+ *
+ * @copyright Ryan Djurovich (2004-2009)
+ * @copyright WebsiteBaker Org. e.V. (2009-2015)
+ * @copyright WBCE Project (2015-)
+ * @license GNU GPL2 (or any later version)
+ */
+
+// Include required files
+require '../../config.php';
+require_once WB_PATH . '/framework/functions.php';
+
+// Limit reload to users with install permission for at least one addon type
+$admin = new admin('Addons', 'addons', false, false);
+$can_reload_modules   = $admin->get_permission('modules_install');
+$can_reload_templates = $admin->get_permission('templates_install');
+$can_reload_languages = $admin->get_permission('languages_install');
+if (!($can_reload_modules || $can_reload_templates || $can_reload_languages)) {
+    die(header('Location: index.php'));
+}
+
+// Build list of what was posted, filtered to only what the user may reload
+$allowed = [];
+if ($can_reload_modules)   $allowed[] = 'reload_modules';
+if ($can_reload_templates) $allowed[] = 'reload_templates';
+if ($can_reload_languages) $allowed[] = 'reload_languages';
+
+$post_check = array_values(array_filter(
+    ['reload_modules', 'reload_templates', 'reload_languages'],
+    fn($k) => isset($_POST[$k]) && in_array($k, $allowed, true)
+));
+if (count($post_check) === 0) {
+    die(header('Location: index.php?advanced'));
+}
+
+// Setup admin object, skip header for FTAN validation and check section permissions
+$admin = new admin('Addons', 'addons', false, true);
+$js_back = ADMIN_URL . '/addons/index.php?advanced';
+if (!$admin->checkFTAN()) {
+    $admin->print_header();
+    $admin->print_error($MESSAGE['GENERIC_SECURITY_ACCESS'], $js_back);
+}
+// Output admin backend header (this creates a new FTAN)
+$admin->print_header();
+
+/**
+ * Reload all specified Addons
+ */
+require_once WB_PATH . '/languages/' . LANGUAGE . '.php';
+$msg = array();
+$table = TABLE_PREFIX . 'addons';
+
+foreach ($post_check as $key) {
+    switch ($key) {
+        case 'reload_modules':
+            if ($handle = opendir(WB_PATH . '/modules/')) {
+                // delete modules from database
+                $sql = "DELETE FROM `$table` WHERE `type` = 'module'";
+                $database->query($sql);
+
+                // loop over all modules
+                while (false !== ($file = readdir($handle))) {
+                    if ($file != '' && substr($file, 0, 1) != '.' && $file != 'admin.php' && $file != 'index.php') {
+                        load_module(WB_PATH . '/modules/' . $file);
+                    }
+                }
+                closedir($handle);
+                // add success message
+                $msg[] = $MESSAGE['ADDON_MODULES_RELOADED'];
+            } else {
+                // provide error message and stop
+                $admin->print_error($MESSAGE['ADDON_ERROR_RELOAD'], $js_back);
+            }
+            break;
+
+        case 'reload_templates':
+            if ($handle = opendir(WB_PATH . '/templates/')) {
+                // delete templates from database
+                $sql = "DELETE FROM `$table` WHERE `type` = 'template'";
+                $database->query($sql);
+
+                // loop over all templates
+                while (false !== ($file = readdir($handle))) {
+                    if ($file != '' and substr($file, 0, 1) != '.' and $file != 'index.php') {
+                        load_template(WB_PATH . '/templates/' . $file);
+                    }
+                }
+                closedir($handle);
+                // add success message
+                $msg[] = $MESSAGE['ADDON_TEMPLATES_RELOADED'];
+            } else {
+                // provide error message and stop
+                $admin->print_error($MESSAGE['ADDON_ERROR_RELOAD'], $js_back);
+            }
+            break;
+
+        case 'reload_languages':
+            if ($handle = opendir(WB_PATH . '/languages/')) {
+                // delete languages from database
+                $sql = "DELETE FROM `$table` WHERE `type` = 'language'";
+                $database->query($sql);
+
+                // loop over all languages
+                while (false !== ($file = readdir($handle))) {
+                    if ($file != '' && substr($file, 0, 1) != '.' && $file != 'index.php') {
+                        load_language(WB_PATH . '/languages/' . $file);
+                    }
+                }
+                closedir($handle);
+                // add success message
+                $msg[] = $MESSAGE['ADDON_LANGUAGES_RELOADED'];
+            } else {
+                // provide error message and stop
+                $admin->print_error($MESSAGE['ADDON_ERROR_RELOAD'], $js_back);
+            }
+            break;
+    }
+}
+
+// output success message
+$admin->print_success(implode('<br />', $msg), $js_back);
+$admin->print_footer();

@@ -1,0 +1,204 @@
+<!-- BEGIN header_block -->
+<!DOCTYPE html>
+<html lang="{LANGUAGE}">
+    <head>
+
+        <!--(PH) META HEAD+ -->
+        <meta charset="{CHARSET}">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Encoding" content="gzip" />
+        <meta http-equiv="Accept-Encoding" content="gzip, deflate" />
+        <!--(PH) META HEAD- -->
+
+        <!-- Website meta data -->
+        <!--(PH) TITLE+ --><title>{WEBSITE_TITLE} - {TEXT_ADMINISTRATION} - {SECTION_NAME}</title><!--(PH) TITLE- -->
+        <!--(PH) META DESC+ --><meta name="description" content="{TEXT_ADMINISTRATION}" /><!--(PH) META DESC- -->
+        <!--(PH) META KEY+ --><meta name="keywords" content="{TEXT_ADMINISTRATION}" /><!--(PH) META KEY- -->
+        <meta name="author" content="Jonathan Nessier" />
+
+        <!-- Theme favicons -->
+        <link rel="icon" href="{THEME_URL}/images/favicons/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/svg+xml" href="{THEME_URL}/images/favicons/favicon.svg" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{THEME_URL}/images/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{THEME_URL}/images/favicons/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{THEME_URL}/images/favicons/apple-touch-icon.png" />
+        <link rel="mask-icon" href="{THEME_URL}/images/favicons/safari-pinned-tab.svg" color="#1d4ed8" />
+        <link rel="manifest" href="{THEME_URL}/images/favicons/site.webmanifest" />
+        <meta name="theme-color" content="#2563eb" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="WBCE CMS" />
+        <meta name="msapplication-TileColor" content="#2563eb" />
+        <meta name="msapplication-config" content="{THEME_URL}/images/favicons/browserconfig.xml" />
+
+        <!--(PH) CSS HEAD TOP+ -->
+        <link href="{THEME_URL}/css/style.min.css?v1.0.28" rel="stylesheet" type="text/css" />
+        <!--(PH) CSS HEAD TOP- -->    
+
+        <!--(PH) CSS HEAD BTM+ -->
+        {BACKEND_MODULE_CSS}
+        <link href="{THEME_URL}/css/admin-layout.css?v1.0.9" rel="stylesheet" type="text/css" />
+        <link href="{THEME_URL}/css/admin-sections.css?v1.0.27" rel="stylesheet" type="text/css" />
+        <link href="{THEME_URL}/css/admin-preferences.css?v1.0.6" rel="stylesheet" type="text/css" />
+        <link href="{THEME_URL}/css/admin-settings.css?v=1.0.11" rel="stylesheet" type="text/css" />
+        <link href="{THEME_URL}/css/admin-users.css?v1.0.6" rel="stylesheet" type="text/css" />
+        <link href="{THEME_URL}/css/media-cms.css?v1.0.29" rel="stylesheet" type="text/css" />
+        <!--(PH) CSS HEAD BTM- -->
+
+        <!-- Initiliaze vars -->
+        <script>
+            var LANGUAGE_CODE = '{LANGUAGE}',
+                THEME_VERSION = '1.0.27',
+                MEDIA_CMS_THEME_URL = '{THEME_URL}';
+        </script>
+
+        <!-- Theme jQuery -->
+        <script src="{THEME_URL}/js/jquery.min.js?v1.0.6"></script>
+
+        <!-- WBCE helper JavaScript -->
+        <script>
+            function confirm_link(message, url) {
+                if (confirm(message))
+                    location.href = url;
+            }
+        </script>
+
+        <!--(PH) JS HEAD TOP+ -->
+        <script src="{THEME_URL}/js/script.js?v1.0.6"></script>
+        <script src="{THEME_URL}/js/media-cms.js?v1.0.8" defer></script>
+        <!--(PH) JS HEAD TOP- -->
+
+        <!--(PH) JS HEAD BTM+ -->
+        {BACKEND_MODULE_JS} 
+        <!--(PH) JS HEAD BTM- -->
+
+    </head>
+    <body class="fixed-nav">
+
+    <script>
+        if (window.location.pathname.indexOf('/admin/admintools/') !== -1) {
+            document.body.classList.add('media-cms-admintools');
+        }
+    </script>
+
+    <!--(PH) JS BODY TOP+ -->
+    <!--(PH) JS BODY TOP- -->
+
+    <!--(PH) HTML BODY TOP+ -->
+    <!--(PH) HTML BODY TOP- -->
+
+    <script>
+        if (localStorage.getItem('side-navigation') === 'minimized') {
+            document.body.classList.add('side-navigation-minimized');
+        }
+    </script>
+
+    <script>
+    document.addEventListener('click', function (event) {
+        var indicator = event.target.closest ? event.target.closest('.wbcemm') : null;
+        if (!indicator || indicator.closest('a')) return;
+        window.location.href = '{ADMIN_URL}/admintools/tool.php?tool=maintainance_mode';
+    });
+    </script>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top" id="topNavigation">
+
+        <span class="navbar-text d-none d-md-inline-block">
+            {WEBSITE_TITLE} {MAINTAINANCEMODEINDICATOR}
+        </span>
+
+        <ul class="navbar-nav navbar-expand ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="javascript:history.back()" title="{TITLE_BACK}">
+                    <i class="fa fa-fw fa-arrow-circle-left"></i> <span class="d-none d-md-inline-block">{TITLE_BACK}</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{URL_VIEW}" target="_blank" title="{TITLE_VIEW}">
+                    <i class="fa fa-fw fa-desktop"></i> <span class="d-none d-md-inline-block">{TITLE_VIEW}</span>
+                </a>
+            </li>
+            <li class="nav-item dropdown media-cms-user-menu">
+                <a class="nav-link dropdown-toggle" href="#" id="mediaCmsUserMenu" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="{DISPLAY_NAME}">
+                    <i class="fa fa-fw fa-user-circle" aria-hidden="true"></i><span class="sr-only">{DISPLAY_NAME}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="mediaCmsUserMenu">
+                    <div class="media-cms-user-name"><i class="fa fa-user" aria-hidden="true"></i> {DISPLAY_NAME}</div>
+                    <a class="dropdown-item" href="{ADMIN_URL}/preferences/index.php"><i class="fa fa-fw fa-id-card-o" aria-hidden="true"></i> Meine Daten</a>
+                    <div class="dropdown-divider"></div>
+                    <div class="media-cms-language-picker"><div class="media-cms-language-title"><i class="fa fa-fw fa-language" aria-hidden="true"></i><span>Sprache</span></div>
+                        <div class="media-cms-language-options" data-media-cms-language aria-label="Sprache auswählen">Sprachen werden geladen …</div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item media-cms-logout" href="{ADMIN_URL}/logout/"><i class="fa fa-fw fa-sign-out" aria-hidden="true"></i> {TITLE_LOGOUT}</a>
+                </div>
+            </li>
+        </ul>
+
+    </nav>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary" id="sideNavigation">
+
+        <ul class="navbar-nav sidenav-toggle-btn">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggleLeftRightBtn"></a>
+            </li>
+        </ul>
+
+        <div class="sidenav-brand">
+            <span class="brand">
+                <span class="media-cms-wordmark" aria-label="WBCE CMS"><strong>WBCE</strong><span>CMS</span></span>
+            </span>
+        </div>
+
+        <button class="sidenav-toggler navbar-toggler navbar-toggler-left" type="button" data-toggle="collapse" data-target="#sidenavCollapse">
+            <i class="fa fa-bars" aria-hidden="true"></i>
+        </button>
+
+        <div class="sidenav-content">
+            <p>{CURRENT_USER}<br/><strong>{DISPLAY_NAME}</strong></p>
+        </div>
+
+        <div class="collapse navbar-collapse" id="sidenavCollapse">
+
+            <ul class="navbar-nav navbar-sidenav">
+                <li class="nav-item dashboard">
+                    <a class="nav-link" href="{ADMIN_URL}/start/index.php" title="{TITLE_START}">
+                                <span class="nav-link-icon">
+                                    <i class="fa fa-fw fa-dashboard"></i>
+                                </span>
+                        <span class="nav-link-text">
+                                    {TITLE_START}
+                                </span>
+                    </a>
+                </li>
+                <!-- BEGIN linkBlock -->
+                <li class="nav-item item-{CLASS}">
+                    <a class="nav-link" href="{LINK}" target="{TARGET}" title="{TITLE}">
+                        <span class="nav-link-icon"></span>
+                        <span class="nav-link-text">
+                                    {TITLE}
+                                </span>
+                    </a>
+                </li>
+                <!-- END linkBlock -->
+            </ul>
+        </div>
+
+        <div class="sidenav-content small">
+            <ul class="versions media-cms-system-info">
+                <li><span>WBCE Version:</span> <strong>{WBCE_VERSION}</strong></li>
+                <li><span>WBCE CMS:</span> <strong>1.0.23</strong></li>
+                <li><span>Session timeout:</span> <strong id="countdown" class="timer">0:00:00</strong></li>
+                <li style="display:{RUNTIME_DISPLAY_STYLE}"><span>Laufzeit:</span> <strong id="wbce-runtime">{RUNTIME_MS} ms</strong></li>
+            </ul>
+            <p class="media-cms-wbce-copyright"><a href="https://wbce.org/" title="Visit wbce.org" target="_blank" rel="noopener noreferrer">WBCE</a> is released under the <a href="https://www.gnu.org/licenses/gpl.html" title="GNU General Public License" target="_blank" rel="noopener noreferrer">GNU General Public License</a></p>
+        </div>
+    </nav>
+
+    <div id="main-content">
+
+        <div class="container-fluid">
+            <div class="content-body content">
+                <!-- END header_block -->

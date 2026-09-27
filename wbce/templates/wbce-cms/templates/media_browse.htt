@@ -1,0 +1,105 @@
+<!-- BEGIN main_block -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Browse media</title>
+
+        <!-- Theme meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Website meta data -->
+        <meta name="description" content="Browse media" />
+        <meta name="keywords" content="Browse media" />
+        <meta name="author" content="Jonathan Nessier" />
+
+        <!-- Theme favicons -->
+        <link rel="icon" href="{THEME_URL}/images/favicons/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="{THEME_URL}/images/favicons/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="{THEME_URL}/images/favicons/favicon-16x16.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="{THEME_URL}/images/favicons/apple-touch-icon.png" />
+        <meta name="theme-color" content="#2563eb" />
+
+        <!-- Theme CSS -->
+        <link href="{THEME_URL}/css/style.min.css?v1.0.6" rel="stylesheet" type="text/css" />
+        <link href="{THEME_URL}/css/media-cms.css?v1.0.29" rel="stylesheet" type="text/css" />
+
+        <!-- WBCE module CSS -->
+        {BACKEND_MODULE_CSS}
+
+        <!-- Initiliaze vars -->
+        <script>
+            var WB_URL = '{WB_URL}',
+                THEME_URL = '{THEME_URL}',
+                ADMIN_URL = '{ADMIN_URL}',
+                LANGUAGE_CODE = navigator.language || navigator.userLanguage,
+                THEME_VERSION = '1.0.6';
+        </script>
+
+        <!-- Theme jQuery -->
+        <script src="{THEME_URL}/js/jquery.min.js?v1.0.6"></script>
+
+        <!-- WBCE helper JavaScript -->
+        <script>
+            function confirm_link(message, url) {
+                if (confirm(message))
+                    location.href = url;
+            }
+        </script>
+
+        <!-- Theme JavaScript -->
+        <script src="{THEME_URL}/js/script.min.js?v1.0.6"></script>
+        <script src="{THEME_URL}/js/media-cms.js?v1.0.8" defer></script>
+
+    </head>
+    <body id="mediaBrowsePage">
+        <table class="table table-striped" class="{DISPLAY_LIST_TABLE}">
+            <thead>
+                <tr>
+                    <th colspan="2">
+                        <a href="{PARENT_DIR_LINK}" class="{DISPLAY_UP_ARROW}">
+                            <i class="fa fa-fw fa-level-up"></i> {TEXT_UP}
+                        </a>
+                    </th>
+                    <th colspan="3" class="text-right">
+                        <span>{TEXT_CURRENT_FOLDER}: {MEDIA_DIRECTORY}{CURRENT_DIR}</span>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- BEGIN list_block -->
+                <tr>
+                    <td class="thumb">
+                        <a class="icon" href="{LINK}" target="{LINK_TARGET}">
+                            <img src="{FT_ICON}" class="img-fluid" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{LINK}" target="{LINK_TARGET}">{NAME}</a>
+                    </td>
+                    <td class="d-none d-md-table-cell">
+                        <small class="nowrap">{IMAGEDETAIL}</small>
+                    </td>
+                    <td class="d-none d-md-table-cell">
+                        <small>{DATE}</small>
+                    </td>
+                    <td class="{DISPLAY_RENAME} text-right nowrap">
+                        <a href="rename.php?dir={CURRENT_DIR}&amp;id={TEMP_ID}" title="{TEXT_RENAME}"><i class="fa fa-fw fa-pencil"></i></a>
+                        <a href="javascript:confirm_link('{CONFIRM_DELETE}\n {NAME_SLASHED}', 'delete.php?dir={CURRENT_DIR}&amp;id={TEMP_ID}');" title="{TEXT_DELETE}"><i class="fa fa-fw fa-trash"></i></a>
+                    </td>
+                </tr>
+                <!-- END list_block -->
+            </tbody>
+        </table>
+        <p class="{DISPLAY_NONE_FOUND} alert text-muted">{NONE_FOUND}</p>
+
+        <!-- Custom JavaScript -->
+        <script>
+            window.parent.$('#uploadTargetSelect, #createTargetSelect').data('silent', 1).val('{MEDIA_DIRECTORY}{CURRENT_DIR}').trigger('change').data('silent', 0);
+            $('a > img[src$="blank_16.png"]').html('');
+        </script>
+
+    </body>
+</html>
+<!-- END main_block -->

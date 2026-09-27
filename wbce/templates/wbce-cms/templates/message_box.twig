@@ -1,0 +1,53 @@
+{% if MESSAGE_TYPE == 'success' %}
+
+    <div class="alert alert-success">
+        {% for msg in MESSAGES %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+
+        {% if USE_REDIRECT %}
+            <script type="text/javascript">
+                setTimeout("location.href='{{ REDIRECT_URL }}'", {{ REDIRECT_TIME }});
+            </script>
+            <hr/>
+            <a href="{{ REDIRECT_URL }}" class="btn btn-success">
+                <i class="fa fa-fw fa-arrow-circle-left"></i>{{ L_('TEXT:BACK') }}
+            </a>
+        {% endif %}
+    </div>
+
+{% elseif MESSAGE_TYPE == 'error' %}
+
+    <div class="alert alert-danger">
+
+        {% for msg in MESSAGES %}
+            <p>{{ msg }}</p>
+        {% endfor %}
+
+        {% if USE_REDIRECT %}
+            <hr/>
+            <a href="{{ REDIRECT_URL }}" class="btn btn-danger">
+                <i class="fa fa-fw fa-arrow-circle-left"></i>{{ L_('TEXT:BACK') }}
+            </a>
+        {% endif %}
+    </div>
+
+{% endif %}
+
+<script>
+    if (typeof jQuery == 'undefined') {
+        var script = document.createElement("script");
+        script.src = '../../templates/wbce-cms/js/jquery.min.js?v1.0.6';
+        script.type = 'text/javascript';
+        script.onload = function () {
+            var $ = window.jQuery;
+            if ($('.alert').css('margin', 0).parent().is('body')) {
+                $('body').css({
+                    background: '#fff',
+                    padding: '0.75rem'
+                });
+            }
+        };
+        document.getElementsByTagName("head")[0].appendChild(script);
+    }
+</script>

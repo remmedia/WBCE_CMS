@@ -1,0 +1,21 @@
+<!-- BEGIN main_block -->
+
+<div class="wbce-profile-app">
+<header class="wbce-profile-hero"><span class="wbce-profile-hero-icon"><i class="fa fa-user"></i></span><div><h2>Meine Daten</h2><p>Pers&ouml;nliche Angaben, Sprache, Zeitdarstellung und Zugangsdaten verwalten.</p></div></header>
+<form name="{FORM_NAME}" id="{FORM_NAME}" action="{ACTION_URL}" method="post" class="wbce-profile-form">{FTAN}
+<section class="wbce-profile-card"><div class="wbce-profile-card-heading"><i class="fa fa-id-card-o"></i><div><h3>Profil</h3><p>Die Angaben, mit denen Sie im CMS angezeigt werden.</p></div></div>
+<div class="wbce-profile-row"><div class="wbce-profile-label">{TEXT_USERNAME}</div><div class="wbce-profile-value"><span class="wbce-profile-readonly">{USERNAME}</span></div></div>
+<div class="wbce-profile-row"><label class="wbce-profile-label" for="display_name">{TEXT_DISPLAY_NAME}</label><div class="wbce-profile-value"><input type="text" id="display_name" name="display_name" value="{DISPLAY_NAME}"></div></div>
+<div class="wbce-profile-row"><label class="wbce-profile-label" for="email">{TEXT_EMAIL}</label><div class="wbce-profile-value"><input type="email" id="email" name="email" value="{EMAIL}"></div></div></section>
+<section class="wbce-profile-card"><div class="wbce-profile-card-heading"><i class="fa fa-globe"></i><div><h3>Sprache und Zeit</h3><p>Darstellung und lokale Zeitzone f&uuml;r Ihr Benutzerkonto.</p></div></div>
+<div class="wbce-profile-row"><label class="wbce-profile-label" for="language">{TEXT_LANGUAGE}</label><div class="wbce-profile-value"><select name="language" id="language"><!-- BEGIN language_list_block --><option value="{CODE}" {SELECTED}>{NAME}</option><!-- END language_list_block --></select></div></div>
+<div class="wbce-profile-row"><label class="wbce-profile-label" for="timezone">{TEXT_TIMEZONE}</label><div class="wbce-profile-value"><select name="timezone" id="timezone"><!-- BEGIN timezone_list_block --><option value="{VALUE}" {SELECTED}>{NAME}</option><!-- END timezone_list_block --></select></div></div>
+<div class="wbce-profile-row"><label class="wbce-profile-label" for="date_format">{TEXT_DATE_FORMAT}</label><div class="wbce-profile-value"><select name="date_format" id="date_format"><!-- BEGIN date_format_list_block --><option value="{VALUE}" {SELECTED}>{NAME}</option><!-- END date_format_list_block --></select></div></div>
+<div class="wbce-profile-row"><label class="wbce-profile-label" for="time_format">{TEXT_TIME_FORMAT}</label><div class="wbce-profile-value"><select name="time_format" id="time_format"><!-- BEGIN time_format_list_block --><option value="{VALUE}" {SELECTED}>{NAME}</option><!-- END time_format_list_block --></select></div></div></section>
+<section class="wbce-profile-card"><div class="wbce-profile-card-heading"><i class="fa fa-lock"></i><div><h3>{HEADING_MY_PASSWORD}</h3><p>Neue Passwortfelder leer lassen, wenn das Passwort unver&auml;ndert bleiben soll.</p></div></div>
+<div class="wbce-profile-row"><label class="wbce-profile-label">{TEXT_NEW_PASSWORD}</label><div class="wbce-profile-value">{INPUT_NEW_PASSWORD}</div></div>
+<div class="wbce-profile-row"><label class="wbce-profile-label" for="new_password_2">{TEXT_RETYPE_NEW_PASSWORD}</label><div class="wbce-profile-value"><input type="password" id="new_password_2" name="new_password_2" value="{EMPTY_STRING}"></div></div>
+<div class="wbce-profile-row wbce-profile-confirm"><label class="wbce-profile-label" for="current_password">{TEXT_NEED_CURRENT_PASSWORD}</label><div class="wbce-profile-value"><input type="password" id="current_password" name="current_password" value="{EMPTY_STRING}" required><small>Zum Speichern aller &Auml;nderungen ist Ihr aktuelles Passwort erforderlich.</small></div></div></section>
+<div class="wbce-profile-actions"><button type="submit" id="submit" name="submit"><i class="fa fa-fw fa-save"></i> {TEXT_SAVE}</button></div>
+</form></div>
+<!-- END main_block -->

@@ -1,0 +1,14 @@
+{
+    "require": {
+        "symfony/mailer": "^8.1",
+        "symfony/http-client": "^8.1",
+        "symfony/postmark-mailer": "^8.1",
+        "symfony/sendgrid-mailer": "^8.1",
+        "symfony/mailgun-mailer": "^8.1",
+        "symfony/amazon-mailer": "^8.1",
+        "symfony/brevo-mailer": "^8.1",
+        "symfony/mailtrap-mailer": "^8.1",
+        "symfony/scaleway-mailer": "^8.1",
+        "symfony/resend-mailer": "^8.1"
+    }
+}

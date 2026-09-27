@@ -1,0 +1,16 @@
+    </div>
+    </div>
+    </div>
+
+    <!--(PH) HTML BODY BTM+ -->
+    <!--(PH) HTML BODY BTM- -->
+    
+    <script>var runtime=document.getElementById("wbce-runtime");if(runtime)runtime.textContent="{RUNTIME_MS} ms";</script>
+
+    <!--(PH) JS BODY BTM+ -->
+    {BACKEND_BODY_MODULE_JS}
+    <!--(PH) JS BODY BTM- -->
+
+    </body>
+</html>
+<!-- END footer_block -->

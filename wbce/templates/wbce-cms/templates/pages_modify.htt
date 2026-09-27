@@ -1,0 +1,54 @@
+<!-- BEGIN main_block -->
+<div id="pagesPage">
+
+    <div class="card">
+        <ul class="nav nav-pills flex-column flex-sm-row">
+            <!--<li class="nav-item text-sm-center">
+                <a class="nav-link active" href="#">
+                    <i class="fa fa-fw fa-pencil"></i> {HEADING_MODIFY_PAGE}
+                </a>
+            </li>-->
+            <li class="nav-item text-sm-center">
+                <a class="nav-link" href="{ADMIN_URL}/pages/settings.php?page_id={PAGE_IDKEY}">
+                    <i class="fa fa-fw fa-cog"></i> {TEXT_CHANGE_SETTINGS}
+                </a>
+            </li>
+            <li class="nav-item text-sm-center">
+                <a class="nav-link" href="{ADMIN_URL}/pages/sections.php?page_id={PAGE_IDKEY}" style="{DISPLAY_MANAGE_SECTIONS}">
+                    <i class="fa fa-fw fa-list-alt"></i> {TEXT_MANAGE_SECTIONS}
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div id="pageModifyCard" class="card">
+        <h4 class="card-header">
+            {HEADING_MODIFY_PAGE}
+        </h4>
+        <div class="card-body">
+            <h4>{TEXT_CURRENT_PAGE}: {PAGE_TITLE}</h4>
+            <ul class="list-inline {CLASS_DISPLAY_MODIFIED}">
+                <!-- BEGIN show_modify_block -->
+                <li class="list-inline-item">{LAST_MODIFIED} {MODIFIED_BY} ({MODIFIED_BY_USERNAME})</li>
+                <li class="list-inline-item">{MODIFIED_WHEN}</li>
+                <li class="list-inline-item">ID: {PAGE_ID}</li>
+                <!-- END show_modify_block -->
+            </ul>
+
+            <!-- BEGIN section_module_block -->
+            <hr />
+            <div class="section-info" id="{SECTION_ANCHOR}" >
+                <b>{TEXT_BLOCK}:</b> {BLOCK_NAME}
+                <b>Modul:</b> {SECTION_MODULE}
+                <b>ID:</b> {SECTION_ID}
+                <b>Name:</b> {SECTION_NAME}
+            </div>
+
+            <div class="pageModuleWrapper {SECTION_MODULE}">
+                {SECTION_MODIFY_OUTPUT}
+            </div>
+            <!-- END section_module_block -->
+        </div>
+    </div>
+</div>
+<!-- END main_block -->

@@ -1,0 +1,56 @@
+{#
+    login.twig — Backend login form
+    Extends login_wrapper.twig for the outer HTML chrome.
+
+    Variables: WB_URL, THEME_URL, ACTION_URL, USERNAME, USERNAME_FIELDNAME,
+              PASSWORD_FIELDNAME, MAX_USERNAME_LEN, MAX_PASSWORD_LEN,
+              FORGOTTEN_DETAILS_APP, CAPTCHA, MESSAGE, CHARSET, LANGUAGE
+#}
+{% extends 'login_wrapper.twig' %}
+
+{% block title %}{{ L_('TEXT:LOGIN') }}{% endblock %}
+
+{% block body_attrs %} onload="document.login.{{ USERNAME_FIELDNAME }}.focus();"{% endblock %}
+
+{% block page_heading %}{{ L_('TEXT:LOGIN') }}{% endblock %}
+
+{% block login_content %}
+    {% if MESSAGE and ATTEMPTS|default(0) > 0 %}
+    <div class="login-message">
+        {{ MESSAGE|raw }}
+    </div>
+    {% endif %}
+
+    <form name="login" class="login media-cms-login-form" action="{{ ACTION_URL }}" method="post" autocomplete="off">
+        <input type="hidden" name="url" value="">
+        <input type="hidden" name="username_fieldname" value="{{ USERNAME_FIELDNAME }}">
+        <input type="hidden" name="password_fieldname" value="{{ PASSWORD_FIELDNAME }}" autocomplete="off">
+        <div class="form-group media-cms-login-field">
+            <label for="inputUsername">{{ L_('TEXT:USERNAME') }}</label>
+            <span class="media-cms-login-input">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <input class="form-control" id="inputUsername" type="text" maxlength="{{ MAX_USERNAME_LEN }}" name="{{ USERNAME_FIELDNAME }}" value="{{ USERNAME }}" autocomplete="username">
+            </span>
+        </div>
+
+        <div class="form-group media-cms-login-field">
+            <label for="inputPassword">{{ L_('TEXT:PASSWORD') }}</label>
+            <span class="media-cms-login-input">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+                <input class="form-control" id="inputPassword" type="password" maxlength="{{ MAX_PASSWORD_LEN }}" name="{{ PASSWORD_FIELDNAME }}" autocomplete="current-password">
+            </span>
+        </div>
+
+        {{ LOGIN_PROVIDERS|raw }}
+
+        {% if CAPTCHA %}
+            <div class="form-group media-cms-login-captcha">{{ CAPTCHA|raw }}</div>
+        {% endif %}
+
+        <button type="submit" class="btn btn-primary media-cms-login-submit"><i class="fa fa-sign-in" aria-hidden="true"></i><span>{{ L_('TEXT:LOGIN') }}</span></button>
+    </form>
+
+    <div class="links center media-cms-login-links">
+        <p><a href="{{ FORGOTTEN_DETAILS_APP }}">{{ L_('TEXT:FORGOTTEN_DETAILS') }}</a></p>
+    </div>
+{% endblock %}

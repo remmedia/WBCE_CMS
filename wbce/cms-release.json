@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "type": "cms",
+  "slug": "wbce-cms",
+  "name": "WBCE CMS",
+  "version": "1.7.0-dev.202",
+  "description": "WBCE CMS-Kernpaket für kontrollierte Systemupdates über den Updater.",
+  "platform": "1.7.0",
+  "installer_entry": "install/index.php",
+  "package_uuid": "ac171b28-bd59-4f28-bbf1-086b275edf52"
+}

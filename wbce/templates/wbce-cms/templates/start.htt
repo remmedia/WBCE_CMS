@@ -1,0 +1,17 @@
+<!-- BEGIN main_block -->
+
+<div id="page_start" class="wbce-section-shell wbce-admin-workspace wbce-dashboard-shell">
+    <header class="wbce-section-hero"><i class="fa fa-dashboard"></i><div><h2>Dashboard</h2><p>Die wichtigsten Bereiche und Informationen auf einen Blick.</p></div></header>
+    <div class="wbce-dashboard-widgets">{DASHBOARD_WIDGETS}</div>
+    <div class="alertbox" style="{DISPLAY_WARNING};">{WARNING}</div>
+    <div class="wbce-dashboard-grid">
+        <article id="module_pages" class="wbce-dashboard-card" style="{DISPLAY_PAGES};"><span class="wbce-dashboard-icon"><i class="fa fa-files-o"></i></span><span><strong><a href="{ADMIN_URL}/pages/index.php">{PAGES}</a></strong><small>{PAGES_OVERVIEW}</small></span><a class="wbce-dashboard-open" href="{ADMIN_URL}/pages/index.php" aria-label="{PAGES}"><i class="fa fa-angle-right"></i></a></article>
+        <article id="module_media" class="wbce-dashboard-card" style="{DISPLAY_MEDIA};"><span class="wbce-dashboard-icon"><i class="fa fa-image"></i></span><span><strong><a href="{ADMIN_URL}/media/index.php">{MEDIA}</a></strong><small>{MEDIA_OVERVIEW}</small></span><a class="wbce-dashboard-open" href="{ADMIN_URL}/media/index.php" aria-label="{MEDIA}"><i class="fa fa-angle-right"></i></a></article>
+        <article id="module_addons" class="wbce-dashboard-card" style="{DISPLAY_ADDONS};"><span class="wbce-dashboard-icon"><i class="fa fa-sitemap"></i></span><span><strong><a href="{ADMIN_URL}/addons/index.php">{ADDONS}</a></strong><small>{ADDONS_OVERVIEW}</small></span><a class="wbce-dashboard-open" href="{ADMIN_URL}/addons/index.php" aria-label="{ADDONS}"><i class="fa fa-angle-right"></i></a></article>
+        <article id="module_preferences" class="wbce-dashboard-card"><span class="wbce-dashboard-icon"><i class="fa fa-sliders"></i></span><span><strong><a href="{ADMIN_URL}/preferences/index.php">{PREFERENCES}</a></strong><small>{PREFERENCES_OVERVIEW}</small></span><a class="wbce-dashboard-open" href="{ADMIN_URL}/preferences/index.php" aria-label="{PREFERENCES}"><i class="fa fa-angle-right"></i></a></article>
+        <article id="module_settings" class="wbce-dashboard-card" style="{DISPLAY_SETTINGS};"><span class="wbce-dashboard-icon"><i class="fa fa-gears"></i></span><span><strong><a href="{ADMIN_URL}/settings/index.php">{SETTINGS}</a></strong><small>{SETTINGS_OVERVIEW}</small></span><a class="wbce-dashboard-open" href="{ADMIN_URL}/settings/index.php" aria-label="{SETTINGS}"><i class="fa fa-angle-right"></i></a></article>
+        <article id="module_admintools" class="wbce-dashboard-card" style="{DISPLAY_ADMINTOOLS};"><span class="wbce-dashboard-icon"><i class="fa fa-wrench"></i></span><span><strong><a href="{ADMIN_URL}/admintools/index.php">{ADMINTOOLS}</a></strong><small>{ADMINTOOLS_OVERVIEW}</small></span><a class="wbce-dashboard-open" href="{ADMIN_URL}/admintools/index.php" aria-label="{ADMINTOOLS}"><i class="fa fa-angle-right"></i></a></article>
+        <article id="module_access" class="wbce-dashboard-card" style="{DISPLAY_ACCESS};"><span class="wbce-dashboard-icon"><i class="fa fa-users"></i></span><span><strong><a href="{ADMIN_URL}/access/index.php">{ACCESS}</a></strong><small>{ACCESS_OVERVIEW}</small></span><a class="wbce-dashboard-open" href="{ADMIN_URL}/access/index.php" aria-label="{ACCESS}"><i class="fa fa-angle-right"></i></a></article>
+    </div>
+</div>
+<!-- END main_block -->

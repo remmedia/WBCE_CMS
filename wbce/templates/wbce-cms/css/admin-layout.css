@@ -1,0 +1,190 @@
+:root {
+    --wbce-admin-primary: #2271b1;
+    --wbce-admin-primary-dark: #135e96;
+    --wbce-admin-surface: #fff;
+    --wbce-admin-text: #263238;
+    --wbce-admin-muted: #65727b;
+    --wbce-admin-border: #dfe5e9;
+    --wbce-admin-radius: 13px;
+    --wbce-admin-shadow: 0 4px 18px rgba(31, 45, 61, .07);
+}
+
+/* Admin tool integration only. Core pages retain their dev.20 component CSS. */
+.wbce-admin-tool-shell,
+.adminModuleWrapper {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1180px;
+    margin-right: auto;
+    margin-left: auto;
+    color: var(--wbce-admin-text);
+}
+
+.wbce-admin-hero {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    margin: 0 0 1rem;
+    padding: 1.35rem 1.5rem;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--wbce-admin-primary), var(--wbce-admin-primary-dark));
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(19, 94, 150, .18);
+}
+
+.wbce-admin-hero > i {
+    display: grid;
+    place-items: center;
+    flex: 0 0 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 9px;
+    background: rgba(255, 255, 255, .16);
+    color: #fff;
+    font-size: 1.4rem;
+}
+
+.wbce-admin-hero__content { min-width: 0; }
+.wbce-admin-hero h2 { margin: 0 0 .25rem; color: #fff; font-size: 1.55rem; }
+.wbce-admin-hero p { margin: 0; color: #fff; line-height: 1.45; opacity: .92; }
+.wbce-admin-hero__back {
+    margin-left: auto;
+    padding: .55rem .75rem;
+    border: 1px solid rgba(255, 255, 255, .5);
+    border-radius: 7px;
+    background: rgba(255, 255, 255, .12);
+    color: #fff;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+/* Existing module heroes keep their geometry; only template colors are shared. */
+.adminModuleWrapper [class*="-hero"] {
+    background: linear-gradient(135deg, var(--wbce-admin-primary), var(--wbce-admin-primary-dark)) !important;
+    color: #fff !important;
+}
+.adminModuleWrapper [class*="-hero"] h1,
+.adminModuleWrapper [class*="-hero"] h2,
+.adminModuleWrapper [class*="-hero"] h3,
+.adminModuleWrapper [class*="-hero"] p { color: #fff !important; }
+
+.wbce-admin-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.wbce-admin-tools-grid .admintools_tool,
+.wbce-admin-tools-grid > li {
+    box-sizing: border-box;
+    float: none !important;
+    width: auto !important;
+    margin: 0 !important;
+}
+.wbce-admin-tools-grid .admintools_tool {
+    overflow: hidden;
+    min-height: 150px;
+    border: 1px solid var(--wbce-admin-border) !important;
+    border-radius: var(--wbce-admin-radius) !important;
+    background: var(--wbce-admin-surface) !important;
+    box-shadow: var(--wbce-admin-shadow) !important;
+    transition: border-color .15s ease, box-shadow .15s ease, transform .15s ease;
+}
+.wbce-admin-tools-grid .admintools_tool:hover {
+    border-color: var(--wbce-admin-primary) !important;
+    box-shadow: 0 8px 24px rgba(31, 45, 61, .12) !important;
+    transform: translateY(-2px);
+}
+.wbce-admin-tools-grid .admintools_tool .tb_header,
+.wbce-admin-tools-grid .admintools_tool .tb_content_outer,
+.wbce-admin-tools-grid .admintools_tool .tb_footer {
+    box-sizing: border-box;
+    border-color: var(--wbce-admin-border);
+}
+
+/* Droplets lower-area layout. */
+.adminModuleWrapper .droplets-editor-frame { margin-top: 1rem; border: 1px solid var(--wbce-admin-border) !important; border-radius: var(--wbce-admin-radius) !important; background: var(--wbce-admin-surface) !important; box-shadow: var(--wbce-admin-shadow) !important; }
+.adminModuleWrapper .droplets-editor-frame .buttonsRow { display: flex; flex-wrap: wrap; align-items: center; gap: .65rem; margin: 1.2rem -1.35rem -1.25rem; padding: 1rem 1.35rem; border-top: 1px solid var(--wbce-admin-border); background: #f8fafb; }
+.adminModuleWrapper .droplets-editor-frame .buttonsRow .pos-right { float: none !important; margin-left: auto; }
+.adminModuleWrapper #privacyPolicy.Inset { box-sizing: border-box; display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center; gap: .25rem 1.25rem; margin: 1rem 0 0; padding: 1rem 1.2rem; border: 1px solid var(--wbce-admin-border); border-radius: var(--wbce-admin-radius); background: var(--wbce-admin-surface); box-shadow: var(--wbce-admin-shadow); }
+.adminModuleWrapper #privacyPolicy.Inset img { grid-row: span 2; max-width: 110px !important; max-height: 42px; object-fit: contain; object-position: right center; }
+.adminModuleWrapper #privacyPolicy.Inset p { color: var(--wbce-admin-muted); }
+.adminModuleWrapper #privacyPolicy.Inset button { grid-column: 1; justify-self: start; min-height: 2.4rem; padding: .5rem .8rem; border: 1px solid var(--wbce-admin-primary); border-radius: 8px; background: #fff; color: var(--wbce-admin-primary-dark); font: inherit; font-weight: 700; }
+.adminModuleWrapper #privacyPolicy.Inset button:hover,.adminModuleWrapper #privacyPolicy.Inset button:focus { background: #e9f3fb; color: var(--wbce-admin-primary-dark) !important; }
+@media (max-width:640px){.adminModuleWrapper .droplets-editor-frame .buttonsRow{margin-right:-.75rem;margin-bottom:-.75rem;margin-left:-.75rem;padding:.85rem .75rem}.adminModuleWrapper .droplets-editor-frame .buttonsRow .pos-right{margin-left:0}.adminModuleWrapper #privacyPolicy.Inset{grid-template-columns:1fr}.adminModuleWrapper #privacyPolicy.Inset img{grid-row:auto;grid-column:1;justify-self:start;object-position:left center}}
+
+/* Shared on/off control for core pages and admin modules. */
+.wbce-admin-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: .7rem;
+    margin: 0;
+    cursor: pointer;
+}
+.wbce-admin-switch input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+}
+.wbce-admin-switch__control {
+    position: relative;
+    flex: 0 0 46px;
+    width: 46px;
+    height: 24px;
+    border: 1px solid #9aa6af;
+    border-radius: 999px;
+    background: #c8d0d5;
+    transition: background .16s ease, border-color .16s ease, box-shadow .16s ease;
+}
+.wbce-admin-switch__control::after {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .28);
+    content: '';
+    transition: transform .16s ease;
+}
+.wbce-admin-switch input:checked + .wbce-admin-switch__control {
+    border-color: var(--wbce-admin-primary-dark);
+    background: var(--wbce-admin-primary);
+}
+.wbce-admin-switch input:checked + .wbce-admin-switch__control::after { transform: translateX(22px); }
+.wbce-admin-switch input:focus-visible + .wbce-admin-switch__control {
+    outline: 2px solid var(--wbce-admin-primary);
+    outline-offset: 2px;
+}
+.wbce-admin-switch input:disabled + .wbce-admin-switch__control { opacity: .5; cursor: not-allowed; }
+
+@media (max-width: 760px) {
+    .wbce-admin-hero { align-items: flex-start; flex-wrap: wrap; padding: 1.1rem; }
+    .wbce-admin-hero__back { margin-left: 0; }
+    .wbce-admin-tools-grid { grid-template-columns: 1fr; }
+}
+
+/* Generic public component API for admin modules. No module-specific selectors. */
+.wbce-admin-component-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1rem}
+.wbce-admin-card,.wbce-admin-form{box-sizing:border-box;padding:1.2rem;border:1px solid var(--wbce-admin-border);border-radius:var(--wbce-admin-radius);background:var(--wbce-admin-surface);color:var(--wbce-admin-text);box-shadow:var(--wbce-admin-shadow)}
+.adminModuleWrapper .wbce-admin-component-grid{align-items:stretch}
+.adminModuleWrapper .wbce-admin-component-grid>.content-box,.adminModuleWrapper .wbce-admin-component-grid>.wbce-admin-card{box-sizing:border-box;height:100%;border:1px solid var(--wbce-admin-border);border-radius:var(--wbce-admin-radius);background:var(--wbce-admin-surface);box-shadow:var(--wbce-admin-shadow)}
+.prepage .wbce-admin-form{width:100%;margin:1rem 0 0}
+.prepage .wbce-admin-form .login-submit{margin:1rem 0 0}
+.prepage .wbce-admin-form .wbce-admin-button{width:100%}
+.wbce-admin-card--active{border-color:var(--wbce-admin-primary)}
+.wbce-admin-muted{color:var(--wbce-admin-muted)}
+.wbce-admin-field{display:grid;gap:.35rem;font-weight:700}
+.wbce-admin-field input,.wbce-admin-field select,.wbce-admin-field textarea{box-sizing:border-box;width:100%;min-height:2.7rem;padding:.55rem .7rem;border:1px solid var(--wbce-admin-border);border-radius:calc(var(--wbce-admin-radius) * .55);background:var(--wbce-admin-surface);color:var(--wbce-admin-text)}
+.wbce-admin-field input:focus,.wbce-admin-field select:focus,.wbce-admin-field textarea:focus{border-color:var(--wbce-admin-primary);outline:2px solid var(--wbce-admin-primary);outline-offset:1px}
+.wbce-admin-button{display:inline-flex;align-items:center;justify-content:center;min-height:2.6rem;padding:.58rem .9rem;border:1px solid var(--wbce-admin-primary-dark);border-radius:calc(var(--wbce-admin-radius) * .55);background:var(--wbce-admin-primary);color:#fff;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.wbce-admin-button:hover{background:var(--wbce-admin-primary-dark);color:#fff}.wbce-admin-button:disabled{border-color:var(--wbce-admin-border);background:var(--wbce-admin-border);color:var(--wbce-admin-muted);cursor:not-allowed}.wbce-admin-button--danger{border-color:var(--wbce-admin-danger,#b42318);background:var(--wbce-admin-danger,#b42318)}
+.wbce-admin-dialog{width:min(31rem,calc(100vw - 2rem));padding:1.25rem;border:1px solid var(--wbce-admin-border);border-radius:var(--wbce-admin-radius);background:var(--wbce-admin-surface);color:var(--wbce-admin-text);box-shadow:0 20px 60px rgba(0,0,0,.32)}.wbce-admin-dialog::backdrop{background:rgba(15,23,42,.52)}
+.wbce-admin-toast{position:fixed;z-index:100000;right:22px;bottom:22px;width:min(390px,calc(100vw - 44px));box-sizing:border-box;padding:.85rem 1rem;border:1px solid var(--wbce-admin-border);border-left:5px solid var(--wbce-admin-success,#16a34a);border-radius:calc(var(--wbce-admin-radius) * .65);background:var(--wbce-admin-surface);color:var(--wbce-admin-text);box-shadow:0 10px 30px rgba(0,0,0,.2)}.wbce-admin-toast--error{border-left-color:var(--wbce-admin-danger,#dc2626)}

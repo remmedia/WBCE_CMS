@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="WBCE CMS">
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="#eff6ff"/>
+  <rect x="8" y="8" width="496" height="496" rx="112" fill="none" stroke="#bfdbfe" stroke-width="16"/>
+  <path d="M106 153l54 207 55-142 42 142 55-142 42 142 52-207" fill="none" stroke="#2563eb" stroke-width="38" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="106" cy="153" r="20" fill="#0ea5e9"/>
+  <circle cx="406" cy="153" r="20" fill="#0ea5e9"/>
+</svg>

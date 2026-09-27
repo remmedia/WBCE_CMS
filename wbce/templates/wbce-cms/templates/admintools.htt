@@ -1,0 +1,17 @@
+<!-- BEGIN main_block -->
+
+<div class="wbce-section-shell"><header class="wbce-section-hero"><i class="fa fa-wrench"></i><div><h2>{HEADING_ADMINISTRATION_TOOLS}</h2><p>Installierte Verwaltungswerkzeuge zentral öffnen.</p></div></header>
+
+<div class="media-cms-tool-grid">
+    <!-- BEGIN tool_list_block -->
+    <a class="media-cms-tool-tile" href="{ADMIN_URL}/admintools/tool.php?tool={TOOL_DIR}">
+        <span class="media-cms-tool-icon"><i class="{TOOL_ICON}" aria-hidden="true"></i></span>
+        <span class="media-cms-tool-content"><strong>{TOOL_NAME}</strong><span>{TOOL_DESCRIPTION}</span></span>
+        <i class="fa fa-angle-right media-cms-tool-arrow" aria-hidden="true"></i>
+    </a>
+    <!-- END tool_list_block -->
+</div></div>
+
+{TOOL_LIST} 
+
+<!-- END main_block -->

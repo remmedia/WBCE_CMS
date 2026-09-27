@@ -1,0 +1,70 @@
+*.db
+changelog_creator.sh
+.idea/
+package-lock.json
+node_modules/
+# Local build and release artefacts
+dist/
+*.sha256
+
+# Independent CAPTCHA providers are maintained in ../Module and released separately.
+/wbce/modules/captcha_cap/
+/wbce/modules/captcha_captchafox/
+/wbce/modules/captcha_friendly/
+/wbce/modules/captcha_icon/
+/wbce/modules/captcha_phpcapcha/
+/wbce/modules/captcha_recaptcha/
+/wbce/modules/captcha_trustcaptcha/
+
+# Independent extensions are maintained under ../Module.
+/wbce/modules/cookie_banner_safebanner/
+/wbce/modules/cookie_banner_silktide/
+/wbce/modules/force_password_change/
+/wbce/modules/languages/
+/wbce/modules/mailer_amazon_ses/
+/wbce/modules/mailer_brevo/
+/wbce/modules/mailer_cleverreach/
+/wbce/modules/mailer_mailgun/
+/wbce/modules/mailer_mailtrap/
+/wbce/modules/mailer_phpmailer/
+/wbce/modules/mailer_postmark/
+/wbce/modules/mailer_rapidmail/
+/wbce/modules/mailer_resend/
+/wbce/modules/mailer_scaleway/
+/wbce/modules/mailer_sendgrid/
+/wbce/modules/mailer_symfony/
+/wbce/modules/tool_account_settings/
+/wbce/modules/two_factor_email/
+/wbce/modules/two_factor_webauthn/
+/wbce/modules/two_factor_whatsapp/
+
+# Local development, recovery and historical installer artefacts do not belong to CMS sources.
+/tools/
+/recovery/
+/tests/
+/docs/UPDATE-WBCE2.md
+/WBCE_Bootstrap_Installer-*.zip
+
+# Local package build selection; authoritative component registry is in Shared/release.
+
+# A local installation configuration must never be committed or shipped.
+/wbce/config.php
+
+# Shared worker source is published through the extensions repository.
+/wbce/modules/worker/
+/wbce/modules/accessibility_tools/
+/wbce/modules/addon_monitor/
+/wbce/modules/miniform/
+/wbce/modules/mod_opf_auto_placeholder/
+/wbce/modules/mod_opf_csstohead/
+/wbce/modules/mod_opf_insert/
+/wbce/modules/mod_opf_move_stuff/
+/wbce/modules/mod_opf_remove_system_ph/
+/wbce/modules/mod_opf_replace_stuff/
+/wbce/modules/mod_opf_wblink/
+/wbce/modules/news_img/
+/wbce/modules/simplepagehead/
+/wbce/modules/sitemap/
+/wbce/modules/tool_debug_dump/
+/wbce/modules/wbSeoTool/
+/wbce/modules/wbstats/

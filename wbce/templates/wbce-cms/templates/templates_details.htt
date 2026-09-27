@@ -1,0 +1,27 @@
+<!-- BEGIN main_block -->
+
+<div class="wbce-section-shell wbce-addons-subpage">
+
+<header class="wbce-section-hero"><i class="fa fa-map"></i><div><h2>{HEADING_TEMPLATE_DETAILS}</h2><p>Informationen zum ausgewählten Template.</p></div>
+    <div class="headline-link"> <i class="fa fa-reply"> <a href="#" onclick="window.location = 'index.php';"> {TEXT_BACK} </a> </i> </div>
+</header>
+
+<div class="content-box info-box">
+    <div class="fg3 bold">{TEXT_NAME}:</div>
+    <div class="fg9">{NAME}</div>
+    <hr class="fg12 nom">
+    <div class="fg3 bold">{TEXT_AUTHOR}:</div>
+    <div class="fg9">{AUTHOR}</div>
+    <hr class="fg12 nom">
+    <div class="fg3 bold">{TEXT_VERSION}:</div>
+    <div class="fg9">{VERSION}</div>
+    <hr class="fg12 nom">
+    <div class="fg3 bold">{TEXT_DESCRIPTION}:</div>
+    <div class="fg9">{DESCRIPTION}</div>
+	<hr class="fg12 nom">
+    <div class="fg3 bold">{TEXT_LICENSE}:</div>
+    <div class="fg9">{LICENSE}</div>
+</div>
+
+</div>
+<!-- END main_block -->

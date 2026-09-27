@@ -1,0 +1,18 @@
+<section class="wbce-section-shell wbce-access-shell">
+    <div class="cp-pageinfo"></div>
+    <header class="wbce-users-hero"><i class="fa fa-users"></i><div><h2>{{ L_('MENU:ACCESS') }}</h2><p>Benutzerkonten, Gruppen und Zugriffsrechte zentral verwalten.</p></div></header>
+    <nav class="cp-tabs tabs-right wbce-access-tabs">
+        {% include 'tabs.twig' %}	
+    </nav>  
+    <div id="message-area">{{ MESSAGE_BOX|raw }}</div>
+    <div class="cp-pane-inlay wbce-access-content">   
+        <noscript>JavaScript disabled.</noscript>
+        <div style="clear:both;"></div>
+    {% block content %}
+    {% endblock %}
+    </div>
+</section>
+{{  insertJsFile(WB_URL ~ '/include/htmx/htmx.min.js')}}
+{{ insertCssFile(WB_URL ~ '/include/wbeSelect/wbeSelect.css') }}
+{{ insertJsFile(WB_URL ~ '/include/wbeSelect/wbeSelect.js') }}
+{% include '_toast.inc.twig' %}

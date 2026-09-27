@@ -1,0 +1,31 @@
+<!-- BEGIN footer_block -->
+
+        </td> <!-- .content -->
+        </tr>
+    </table> <!-- #legacy -->
+
+    <div class="clearfix"></div> <!-- für alle Fälle ;-)) -->
+</div> <!-- #content-container -->
+
+<div id="footer">
+	<div id="inner-footer">
+		<div class="scroll-to-top left fg1"><i class="fa fa-lg fa-arrow-circle-o-up"></i></div>
+		<div class="footer-info fg10">
+			WBCE Version: {WBCE_VERSION}
+			&bull;
+			Backend Version: 2.1.0
+			&bull;
+			PHP Version: {PHP_VERSION}
+		</div>
+		<div class="scroll-to-top right fg1"><i class="fa fa-lg fa-arrow-circle-o-up"></i></div>
+	</div>
+</div>
+
+<!--(PH) HTML BODY BTM+ -->
+<!--(PH) HTML BODY BTM- -->
+<!--(PH) JS BODY BTM+ -->
+    {BACKEND_BODY_MODULE_JS}
+<!--(PH) JS BODY BTM- -->
+</body>
+</html>
+<!-- END footer_block -->

@@ -1,0 +1,25 @@
+<!-- BEGIN footer_block -->
+
+<div class="clearfix"></div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<!-- ENDE former_positioning_table -->
+</div>
+<!-- ENDE contentarea -->
+</div>
+<!-- ENDE mainarea -->
+</div>
+<!-- ENDE container --> 
+
+<!--(PH) HTML BODY BTM+ -->
+<!--(PH) HTML BODY BTM- -->
+<!--(PH) JS BODY BTM+ -->
+{BACKEND_BODY_MODULE_JS}
+<!--(PH) JS BODY BTM- -->
+</body>
+</html>
+
+<!-- END footer_block -->

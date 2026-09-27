@@ -1,0 +1,27 @@
+<!-- BEGIN main_block -->
+
+<section id="page-modify">
+    <h2 class="page_titel"> {HEADING_MODIFY_PAGE}
+        <div class="headline-link">
+            <a href="{ADMIN_URL}/pages/settings.php?page_id={PAGE_IDKEY}"> <i class="fa fa-cog"></i> {TEXT_CHANGE_SETTINGS} </a> <span style="{DISPLAY_MANAGE_SECTIONS}"> &nbsp;&nbsp;|&nbsp;&nbsp; </span>
+            <a href="{ADMIN_URL}/pages/sections.php?page_id={PAGE_IDKEY}" style="{DISPLAY_MANAGE_SECTIONS}"> <i class="fa fa-bars"></i> {TEXT_MANAGE_SECTIONS} </a>
+        </div>
+    </h2>
+
+    <h2 class="{DISPLAY_MODIFIED}">
+        {TEXT_CURRENT_PAGE}: <b>{PAGE_TITLE}</b> &nbsp;&nbsp;|&nbsp;&nbsp; PageID: <b>{PAGE_ID}</b> &nbsp;&nbsp;|&nbsp;&nbsp; <i>{LAST_MODIFIED}: {MODIFIED_BY} ({MODIFIED_BY_USERNAME}) - {MODIFIED_WHEN}</i>
+    </h2>
+</section>
+<div class="clearfix"></div>
+
+<!-- BEGIN section_module_block -->
+<div class="section-info" id="{SECTION_ANCHOR}" >
+    <b>{TEXT_BLOCK}: </b>{BLOCK_NAME} <b>Modul: </b>{SECTION_MODULE} <b>ID: </b>{SECTION_ID} <b>Name: </b>{SECTION_NAME}
+</div>
+
+<div class="pageModuleWrapper {SECTION_MODULE_CLASS}">
+    {SECTION_MODIFY_OUTPUT}
+</div>
+<!-- END section_module_block -->
+
+<!-- END main_block -->

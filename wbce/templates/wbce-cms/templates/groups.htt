@@ -1,0 +1,14 @@
+<!-- BEGIN main_block -->
+
+<div class="wbce-users-shell wbce-groups-shell">
+    <header class="wbce-users-hero"><i class="fa fa-users"></i><div><h2>{HEADING_GROUPS}</h2><p>Zugriffsgruppen auswählen, bearbeiten und ihre Berechtigungen verwalten.</p></div><!-- BEGIN manage_users_block --><a class="wbce-users-link" href="{ADMIN_URL}/users/index.php"><i class="fa fa-user"></i> {TEXT_MANAGE_USERS}</a><!-- END manage_users_block --></header>
+    <form name="groups" action="groups.php" method="post" class="wbce-user-card">
+        {FTAN}
+        <h3 class="wbce-user-card__title"><i class="fa fa-address-book"></i> {HEADING_MODIFY_DELETE_GROUP}</h3>
+        <div class="wbce-users-toolbar">
+            <div class="wbce-users-select"><label for="wbce-group-list">{HEADING_GROUPS}</label><select id="wbce-group-list" name="group_id"><!-- BEGIN list_block --><option value="{VALUE}"> {NAME} </option><!-- END list_block --></select></div>
+            <div class="wbce-users-buttons"><button type="submit" name="modify" class="{DISPLAY_MODIFY}"><i class="fa fa-fw fa-pencil"></i> {TEXT_MODIFY}</button><button type="submit" name="delete" onclick="return confirm('{CONFIRM_DELETE}');" class="{DISPLAY_DELETE} danger"><i class="fa fa-fw fa-remove"></i> {TEXT_DELETE}</button></div>
+        </div>
+    </form>
+</div>
+<!-- END main_block -->

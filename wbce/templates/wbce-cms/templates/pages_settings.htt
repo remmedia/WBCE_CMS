@@ -1,0 +1,250 @@
+<!-- BEGIN main_block -->
+<div id="pagesPage">
+
+    <div class="card">
+        <ul class="nav nav-pills flex-column flex-sm-row">
+            <li class="nav-item text-sm-center">
+                <a class="nav-link" href="{ADMIN_URL}/pages/modify.php?page_id={PAGE_IDKEY}">
+                    <i class="fa fa-fw fa-pencil"></i> {TEXT_MODIFY_PAGE}
+                </a>
+            </li>
+            <!--<li class="nav-item text-sm-center">
+                <a class="nav-link active" href="#">
+                    <i class="fa fa-fw fa-cog"></i> {HEADING_MODIFY_PAGE_SETTINGS}
+                </a>
+            </li>-->
+            <!-- BEGIN show_section_block -->
+            <li class="nav-item text-sm-center" style="{DISPLAY_MANAGE_SECTIONS}">
+                <a class="nav-link" href="{ADMIN_URL}/pages/sections.php?page_id={PAGE_IDKEY}" style="{DISPLAY_MANAGE_SECTIONS}">
+                    <i class="fa fa-fw fa-list-alt"></i> {TEXT_MANAGE_SECTIONS}
+                </a>
+            </li>
+            <!-- END show_section_block -->
+        </ul>
+    </div>
+
+
+    <div id="pageModifyCard" class="card">
+        <h4 class="card-header">
+            {HEADING_MODIFY_PAGE}
+        </h4>
+        <div class="card-body">
+            <h4>{TEXT_CURRENT_PAGE}: {PAGE_TITLE}</h4>
+            <ul class="list-inline {CLASS_DISPLAY_MODIFIED}">
+                <!-- BEGIN show_modify_block -->
+                <li class="list-inline-item">{LAST_MODIFIED} {MODIFIED_BY} ({MODIFIED_BY_USERNAME})</li>
+                <li class="list-inline-item">{MODIFIED_WHEN}</li>
+                <li class="list-inline-item">ID: {PAGE_ID}</li>
+                <!-- END show_modify_block -->
+            </ul>
+
+            <hr />
+
+            <form name="settings" action="settings2.php" method="post" class="form-horizontal">
+
+                <input type="hidden" name="page_id" value="{PAGE_ID}" />
+                {FTAN}
+
+                <div class="row">
+                    <div class="col-xl-6">
+
+                        <div class="form-group row">
+                            <label for="inputPageTitle" class="col-sm-3 col-form-label">{TEXT_PAGE_TITLE}</label>
+                            <div class="col-sm-9">
+                                <input value="{PAGE_TITLE}" type="text" name="page_title" id="inputPageTitle" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputMenuTitle" class="col-sm-3 col-form-label">{TEXT_MENU_TITLE}</label>
+                            <div class="col-sm-9">
+                                <input value="{MENU_TITLE}" type="text" name="menu_title" id="inputMenuTitle" class="form-control" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputFilename" class="col-sm-3 col-form-label">{TEXT_FILENAME}</label>
+                            <div class="col-sm-9">
+                                <div class="input-group">
+                                    <input type="text" name="link" class="form-control" id="inputFilename" value="{LINK_VALUE}" />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">
+                                            {PAGE_EXTENSION}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="selectParent" class="col-sm-3 col-form-label">{TEXT_PARENT}</label>
+                            <div class="col-sm-9">
+                                <select name="parent" id="selectParent" class="form-controll">
+                                    <!-- BEGIN page_list_block2 -->
+                                    <option value="{ID}" {SELECTED}>{TITLE}</option>
+                                    <!-- END page_list_block2 -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="textareaDescription" class="col-sm-3 col-form-label">{TEXT_DESCRIPTION}</label>
+                            <div class="col-sm-9">
+                                <textarea id="textareaDescription" name="description" rows="4" class="form-control vresize">{DESCRIPTION}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="textareaKeywords" class="col-sm-3 col-form-label">{TEXT_KEYWORDS}</label>
+                            <div class="col-sm-9">
+                                <textarea id="textareaKeywords" name="keywords" rows="4" class="form-control vresize">{KEYWORDS}</textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="{DISPLAY_LANGUAGE_LIST}">
+                            <label for="selectLanguage" class="col-sm-3 col-form-label">{TEXT_LANGUAGE}</label>
+                            <div class="col-sm-9">
+                                <select name="language" id="selectLanguage">
+                                    <!-- BEGIN language_list_block -->
+                                    <option value="{VALUE}" {SELECTED}>{NAME}</option>
+                                    <!-- END language_list_block -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row d-none d-xl-block">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="submit" name="save" class="btn btn-primary"><i class="fa fa-fw fa-floppy-o"></i> {TEXT_SAVE} {SECTION_SETTINGS}</button>
+								<button type="submit" name="saveandback" value="saveandback"  class="btn btn-primary"><i class="fa fa-fw fa-save"></i> {TEXT_SAVE} &amp; {TEXT_BACK}</button>
+                            </div>
+                        </div>
+
+
+                    </div><!-- /.col-xl-6 -->
+                    <div class="col-xl-6">
+
+                        <div class="form-group row">
+                            <label for="selectTarget" class="col-sm-3 col-form-label">{TEXT_TARGET}</label>
+                            <div class="col-sm-9">
+                                <select name="target" id="selectTarget">
+                                    <option value="_blank"{BLANK_SELECTED}>{TEXT_NEW_WINDOW}</option>
+                                    <option value="_self"{SELF_SELECTED}>{TEXT_SAME_WINDOW}</option>
+                                    <option value="_top"{TOP_SELECTED}>{TEXT_TOP_FRAME}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="selectTemplate" class="col-sm-3 col-form-label">{TEXT_TEMPLATE}</label>
+                            <div class="col-sm-9">
+                                <select name="template" id="selectTemplate">
+                                    <option value="">{TEXT_SYSTEM_DEFAULT}</option>
+                                    <option value="">----------------------</option>
+                                    <!-- BEGIN template_list_block -->
+                                    <option value="{VALUE}"{SELECTED}>{NAME}</option>
+                                    <!-- END template_list_block -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="{DISPLAY_MENU_LIST}">
+                            <label for="selectMenu" class="col-sm-3 col-form-label">{TEXT_MENU}</label>
+                            <div class="col-sm-9">
+                                <select name="menu" id="selectMenu">
+                                    <!-- BEGIN menu_list_block -->
+                                    <option value="{VALUE}"{SELECTED}>{NAME}</option>
+                                    <!-- END menu_list_block -->
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="selectSearch" class="col-sm-3 col-form-label">{TEXT_SEARCHING}</label>
+                            <div class="col-sm-9">
+                                <select id="selectSearch" name="searching">
+                                    <option value="1">{TEXT_ENABLED}</option>
+                                    <option value="0" {SEARCHING_DISABLED}>{TEXT_DISABLED}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="selectVisibility" class="col-sm-3 col-form-label">{TEXT_VISIBILITY}</label>
+                            <div class="col-sm-9">
+                                <select name="visibility" id="selectVisibility" onchange="javascript: toggleViewers();" class="form-control">
+                                    <option value="public"{PUBLIC_SELECTED}>{TEXT_PUBLIC}</option>
+                                    <option value="private"{PRIVATE_SELECTED}>{TEXT_PRIVATE}</option>
+                                    <option value="registered"{REGISTERED_SELECTED}>{TEXT_REGISTERED}</option>
+                                    <option value="hidden"{HIDDEN_SELECTED}>{TEXT_HIDDEN}</option>
+                                    <option value="none"{NO_VIS_SELECTED}>{TEXT_NONE}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">{TEXT_ADMINISTRATORS}</label>
+                            <div class="col-sm-9">
+                                <!-- BEGIN group_list_block -->
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="admin_groups[]" id="admin_group_{ID}" value="{ID}" {CHECKED} {DISABLED} /> {NAME}
+                                    </label>
+                                </div>
+                                <!-- END group_list_block -->
+                            </div>
+                        </div>
+
+                        <div class="form-group row" id="allowed_viewers" style="{DISPLAY_VIEWERS}">
+                            <label class="col-sm-3 col-form-label">{TEXT_ALLOWED_VIEWERS}</label>
+                            <div class="col-sm-9">
+                                <!-- BEGIN group_list_block2 -->
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="viewing_groups[]" id="viewing_group_{ID}" value="{ID}" {CHECKED} {DISABLED} /> {NAME}
+                                    </label>
+                                </div>
+                                <!-- END group_list_block2 -->
+                            </div>
+                        </div>
+
+                        <div class="form-group row" {DISPLAY_CODE_PAGE_LIST}>
+                            <label for="selectPageCode" class="col-sm-3 col-form-label">{TEXT_PAGE_CODE}</label>
+                            <div class="col-sm-9">
+                                <select name="page_code" id="selectPageCode">
+                                    <!-- BEGIN page_code_list_block -->
+                                    <option value="{VALUE}"{SELECTED} style="background: {FLAG_CODE_ICON} no-repeat center left; padding-left: 20px;">&nbsp;{PAGE_VALUE}</option>
+                                    <!-- END page_code_list_block -->
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group d-xl-none row">
+                            <div class="offset-sm-3 col-sm-9">
+                                <button type="submit" name="submit" class="btn btn-primary"><i class="fa fa-fw fa-floppy-o"></i> {TEXT_SAVE} {SECTION_SETTINGS}</button>
+								<button type="submit" name="saveandback" value="saveandback"  class="btn btn-primary"><i class="fa fa-fw fa-save"></i> {TEXT_SAVE} &amp; {TEXT_BACK}</button>
+                            </div>
+                        </div>
+
+                    </div><!-- /.col-xl-6 -->
+                </div><!-- /#row -->
+
+            </form>
+
+        </div>
+    </div>
+
+</div><!-- /#pagesPage -->
+
+<!-- Custom JavaScript -->
+<script>
+    function toggleViewers() {
+        if (document.settings.visibility.value == 'private' || document.settings.visibility.value == 'registered') {
+            document.getElementById('allowed_viewers').style.display = 'block';
+        } else {
+            document.getElementById('allowed_viewers').style.display = 'none';
+        }
+    }
+</script>
+
+<!-- END main_block -->

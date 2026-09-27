@@ -1,0 +1,13 @@
+{# WBCE 1.7 wrapper for Admin-Tools; older releases use admintools.htt. #}
+<section class="wbce-admin-tool-shell {{ TOOL_DIR }}">
+    <header class="wbce-admin-hero">
+        <i class="fa fa-wrench" aria-hidden="true"></i>
+        <div class="wbce-admin-hero__content">
+            <h2>{{ MODULE_NAME }}</h2>
+        </div>
+        <a class="wbce-admin-hero__back" href="{{ BACK_URL }}" title="{{ BACK_LABEL }}">{{ BACK_LABEL }}</a>
+    </header>
+    <div class="adminModuleWrapper {{ TOOL_DIR }}">
+        {{ CONTENT|raw }}
+    </div>
+</section>

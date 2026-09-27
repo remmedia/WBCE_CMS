@@ -1,0 +1,24 @@
+<!-- BEGIN main_block -->
+
+<div class="wbce-users-shell">
+<header class="wbce-users-head"><div><h2 id="wbce-user-form-title">{HEADING_ADD_USER}</h2><p>Benutzerkonto, Zugang und Sicherheitsvorgaben verwalten.</p></div><a class="wbce-users-link" href="index.php"><i class="fa fa-reply"></i> {TEXT_CANCEL}</a></header>
+<form name="user" action="{ACTION_URL}" method="post" class="{DISPLAY_ADD}" data-edit-mode="{DISPLAY_EXTRA}">
+{FTAN}<input type="hidden" name="user_id" value="{USER_ID}"><input type="hidden" name="username_fieldname" value="{USERNAME_FIELDNAME}">
+<section class="wbce-user-card"><h3 class="wbce-user-card__title"><i class="fa fa-user"></i> Kontodaten</h3><div class="wbce-user-grid">
+<label class="wbce-user-label" for="wbce-username">{TEXT_USERNAME}<sup class="req">*</sup></label><div class="wbce-user-control"><input id="wbce-username" type="text" name="{USERNAME_FIELDNAME}" maxlength="190" value="{USERNAME}" required><p class="wbce-user-note">Auch E-Mail-Adressen und Sonderzeichen sind zulässig.</p></div>
+<label class="wbce-user-label" for="wbce-display-name">{TEXT_DISPLAY_NAME}<sup class="req">*</sup></label><div class="wbce-user-control"><input id="wbce-display-name" type="text" name="display_name" maxlength="255" value="{DISPLAY_NAME}" required></div>
+<label class="wbce-user-label" for="wbce-email">{TEXT_EMAIL}<sup class="req">*</sup></label><div class="wbce-user-control"><input id="wbce-email" type="email" name="email" maxlength="255" value="{EMAIL}" required></div>
+<label class="wbce-user-label" for="wbce-home" style="{DISPLAY_HOME_FOLDERS}">{TEXT_HOME_FOLDER}</label><div class="wbce-user-control" style="{DISPLAY_HOME_FOLDERS}"><select id="wbce-home" name="home_folder"><option value="">{TEXT_NONE}</option><!-- BEGIN folder_list_block --><option value="{FOLDER}"{SELECTED}>{NAME}</option><!-- END folder_list_block --></select></div>
+</div></section>
+<section class="wbce-user-card"><h3 class="wbce-user-card__title"><i class="fa fa-key"></i> Passwort und Sicherheit</h3><div class="wbce-user-grid">
+<label class="wbce-user-label">{TEXT_PASSWORD}<sup class="req"{PASSWORD_REQ}>*</sup></label><div class="wbce-user-control">{INPUT_NEW_PASSWORD}</div>
+<label class="wbce-user-label" for="wbce-password2">{TEXT_RETYPE_PASSWORD}<sup class="req"{PASSWORD_REQ}>*</sup></label><div class="wbce-user-control"><input id="wbce-password2" type="password" name="password2" autocomplete="new-password"><div class="wbce-user-warning" style="{DISPLAY_EXTRA}">{CHANGING_PASSWORD}</div></div>
+</div><div class="wbce-user-module-sections">{USER_MODULE_SECTIONS}</div></section>
+<section class="wbce-user-card"><h3 class="wbce-user-card__title"><i class="fa fa-users"></i> Rechte und Status</h3><div class="wbce-user-grid">
+<label class="wbce-user-label" for="wbce-groups">{TEXT_GROUP}<sup class="req">*</sup></label><div class="wbce-user-control"><select id="wbce-groups" name="groups[]" multiple required><!-- BEGIN group_list_block --><option value="{ID}" {SELECTED}>{NAME}</option><!-- END group_list_block --></select></div>
+<span class="wbce-user-label">Account</span><div class="wbce-user-status"><label class="wbce-user-choice"><input type="radio" name="active[]" value="1" {ACTIVE_CHECKED}> {TEXT_ACTIVE}</label><label class="wbce-user-choice"><input type="radio" name="active[]" value="0" {DISABLED_CHECKED}> {TEXT_DISABLED}</label></div>
+</div></section>
+<div class="wbce-user-actions"><a href="index.php">{TEXT_CANCEL}</a><button type="submit" name="submit"><i class="fa fa-fw fa-save"></i> {SUBMIT_TITLE}</button></div>
+</form></div>
+<script>document.addEventListener('DOMContentLoaded',function(){var form=document.querySelector('.wbce-users-shell form[data-edit-mode]');var title=document.getElementById('wbce-user-form-title');if(form&&title&&form.getAttribute('data-edit-mode').indexOf('display:none')===-1){title.textContent='{HEADING_MODIFY_USER}';}});</script>
+<!-- END main_block -->

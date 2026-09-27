@@ -1,0 +1,189 @@
+<!-- BEGIN main_block -->
+
+<div id="pagesPage" class="wbce-section-shell wbce-admin-workspace wbce-modern-pages">
+    <header class="wbce-section-hero"><i class="fa fa-files-o"></i><div><h2>{TEXT_PAGES}</h2><p>Seitenstruktur und neue Inhalte zentral verwalten.</p></div></header>
+    <div class="fg4">
+        <details class="card wbce-page-create {DISPLAY_ADD}">
+            <summary class="page_titel card-header"><span><i class="fa fa-plus-circle"></i> {HEADING_ADD_PAGE}</span><i class="fa fa-chevron-down wbce-page-create-chevron" aria-hidden="true"></i></summary>
+            <div class="content-box card-body">
+                <div class="addsite_insideborder">
+                    <form name="add" action="add.php" method="post" data-no-ajax>
+                        {FTAN}
+                        <div class="form-group">
+                            <label for="inputTitle">{TEXT_TITLE}</label>
+                            <input type="text" name="title" id="inputTitle" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="selectType">{TEXT_TYPE}</label>
+                            <select id="selectType" name="type" class="form-control">
+                                <!-- BEGIN module_list_block -->
+                                <option value="{VALUE}"{SELECTED}>{NAME}</option>
+                                <!-- END module_list_block -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectParent">{TEXT_PARENT}</label>
+                            <select id="selectParent" name="parent" class="form-control">
+                                <!-- BEGIN page_list_block2 -->
+                                <option value="{ID}" {DISABLED}>{TITLE}</option>
+                                <!-- END page_list_block2 -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="selectVisibility">{TEXT_VISIBILITY}</label>
+                            <select id="selectVisibility" name="visibility" onchange="javascript: toggleViewers();">
+                                <option value="public"{SELECTED}>{TEXT_PUBLIC}</option>
+                                <option value="private">{TEXT_PRIVATE}</option>
+                                <option value="registered">{TEXT_REGISTERED}</option>
+                                <option value="hidden">{TEXT_HIDDEN}</option>
+                                <option value="none">{TEXT_NONE}</option>
+                            </select>
+                        </div>
+                        <p><strong>{TEXT_ADMINISTRATORS}</strong></p>
+                        <!-- BEGIN group_list_block -->
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="admin_groups[]" id="admin_group_{ID}" value="{ID}" {CHECKED} {DISABLED} />
+                                {NAME}
+                            </label>
+                        </div>
+                        <!-- END group_list_block -->
+                        <div id="viewers" style="display: none;">
+                            <p><strong>{TEXT_REGISTERED_VIEWERS}</strong></p>
+                            <!-- BEGIN group_list_block2 -->
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" name="viewing_groups[]" id="viewing_group_{ID}" value="{ID}" {CHECKED} {DISABLED} />
+                                    {NAME}
+                                </label>
+                            </div>
+                            <!-- END group_list_block2 -->
+                        </div>
+                        <button type="submit" name="save" class="btn btn-primary"><i class="fa fa-fw fa-plus"></i> {TEXT_ADD}</button>
+                    </form>
+                </div>
+            </div>
+        </details>
+    </div>
+    <div id="pageListCard" class="card">
+        <h2 class="page_titel card-header">{TEXT_PAGES}</h2>
+        <div class="content-box card-body">{PAGE_TREE}</div>
+    </div>
+    <div class="card wbce-page-intro {DISPLAY_INTRO}">
+        <h2 class="page_titel card-header">{HEADING_MODIFY_INTRO_PAGE}</h2>
+        <div class="content-box card-body">
+            <div class="addsite_insideborder"> <a href="intro.php">{INTRO_LINK}</a> </div>
+        </div>
+    </div>
+</div><!-- /#pagesPage -->
+
+<!-- Custom Javascript -->
+<script>
+
+    // Output fixes
+    $(function () {
+
+        function refreshStripes() {
+            $pageListUl.find('li:visible > table').each(function (index) {
+                if (index % 2 === 0) {
+                    $(this).addClass('table-striped');
+                } else {
+                    $(this).removeClass('table-striped');
+                }
+            });
+        }
+
+        var $pageList = $('.pages_list'),
+                $pageListUl = $pageList.children('ul'),
+                $toggleLinks = $('.toggle a'),
+                $btnExpand = $('.btn-expand'),
+                $btnCollapse = $('.btn-collapse');
+
+        $toggleLinks
+                .on('collapse-list', function (e) {
+                    var $this = $(this);
+                    $this
+                            .removeClass('expanded')
+                            .addClass('collapsed')
+                            .html('<i class="fa fa-fw fa-folder"></i>');
+
+                    var id = $this.data('id');
+                    $('#' + id, $pageListUl).hide();
+                    localStorage.setItem(id, 'collapsed');
+                    refreshStripes();
+                })
+                .on('expand-list', function (e) {
+                    var $this = $(this);
+                    $this
+                            .removeClass('collapsed')
+                            .addClass('expanded')
+                            .html('<i class="fa fa-fw fa-folder-open"></i>');
+
+                    var id = $this.data('id');
+                    $('#' + id, $pageListUl).show();
+                    localStorage.setItem(id, 'expanded');
+                    refreshStripes();
+                })
+                .on('click', function (e) {
+                    e.preventDefault();
+
+                    var $this = $(this);
+                    if ($this.hasClass('collapsed')) {
+                        $this.trigger('expand-list');
+                    } else {
+                        $this.trigger('collapse-list');
+                    }
+                });
+
+        $toggleLinks.each(function () {
+            var $this = $(this);
+
+            var id = $this.data('id');
+            if (localStorage.getItem(id) === 'collapsed') {
+                $this.trigger('collapse-list');
+            } else {
+                $this.trigger('expand-list');
+            }
+        });
+
+        $btnCollapse.on('click', function (e) {
+            e.preventDefault;
+            $toggleLinks.trigger('collapse-list');
+            $btnCollapse.blur();
+        });
+
+        $btnExpand.on('click', function (e) {
+            e.preventDefault;
+            $toggleLinks.trigger('expand-list');
+            $btnExpand.blur();
+        });
+
+        $pageList.show();
+
+        refreshStripes();
+
+    });
+
+    function addChildPage(page_id)
+    {
+        // find and select the page in the parent dropdown
+        $('#selectParent').val(page_id).trigger('change');
+
+        // set focus to add form
+        document.add.title.focus();
+    }
+
+    function toggleViewers() {
+        if (document.add.visibility.value == 'private') {
+            document.getElementById('viewers').style.display = 'block';
+        } else if (document.add.visibility.value == 'registered') {
+            document.getElementById('viewers').style.display = 'block';
+        } else {
+            document.getElementById('viewers').style.display = 'none';
+        }
+    }
+
+</script>
+
+{JS_ADMIN}
+<!-- END main_block -->

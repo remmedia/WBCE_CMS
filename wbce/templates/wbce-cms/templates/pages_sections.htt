@@ -1,0 +1,240 @@
+<!-- BEGIN main_block -->
+<div id="pagesPage">
+
+    <div class="card">
+        <ul class="nav nav-pills flex-column flex-sm-row">
+            <li class="nav-item text-sm-center">
+                <a class="nav-link" href="{ADMIN_URL}/pages/modify.php?page_id={PAGE_IDKEY}">
+                    <i class="fa fa-fw fa-pencil"></i> {HEADING_MODIFY_PAGE}
+                </a>
+            </li>
+            <li class="nav-item text-sm-center">
+                <a class="nav-link" href="{ADMIN_URL}/pages/settings.php?page_id={PAGE_IDKEY}">
+                    <i class="fa fa-fw fa-cog"></i> {TEXT_CHANGE_SETTINGS}
+                </a>
+            </li>
+            <!--<li class="nav-item text-sm-center">
+                <a class="nav-link active" href="#">
+                    <i class="fa fa-fw fa-list-alt"></i> {HEADING_MANAGE_SECTIONS}
+                </a>
+            </li>-->
+        </ul>
+    </div>
+
+
+    <div class="row">
+        <div class="col-lg-8 col-xl-9">
+
+            <div class="card">
+                <h4 class="card-header">
+                    {HEADING_MANAGE_SECTIONS}
+                </h4>
+                <div class="card-body">
+                    <h4>{TEXT_CURRENT_PAGE}: {PAGE_TITLE}</h4>
+                    <ul class="list-inline">
+                        <li class="list-inline-item">ID: {PAGE_ID}</li>
+                    </ul>
+                </div>
+
+                <form name="section_properties" action="{ADMIN_URL}/pages/sections_save.php?page_id={PAGE_IDKEY}" method="post">
+                    {FTAN}
+
+                    <input type="hidden" name="page_id" value="{PAGE_IDKEY}"  />
+                    <input type="hidden" name="section_id" value="{VAR_SECTION_ID}"  />
+
+
+                    <table id="sectionTable" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th style="width: 150px;">{TEXT_TYPE}</th>
+                                <th style="width: 150px;">{TEXT_BLOCK}</th>
+                                <th class="d-none d-sm-table-cell">{TEXT_NAMESECTION}</th>
+                                <th class="d-none d-xl-table-cell">{TEXT_PUBL_START_DATE}</th>
+                                <th class="d-none d-xl-table-cell">{TEXT_PUBL_END_DATE}</th>
+                                <th class="d-none d-xl-table-cell"></th>
+                                <th class="d-none d-xl-table-cell"></th>
+                                <th class="d-none d-sm-table-cell"></th>
+                                <th class="d-none d-sm-table-cell">ID</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- BEGIN section_block -->
+
+                            <tr>
+                                <td style="width: 150px;">{LINK_MODIFY_URL_VAR_MODUL_NAME}</td>
+                                <td class="{INPUT_ATTRIBUTE}" style="min-width: 150px;">
+                                    <select name="block{VAR_SECTION_ID}" id="selectBlock{VAR_SECTION_ID}" class="form-control">
+                                        {SET_NONE_DISPLAY_OPTION}
+                                        <!-- BEGIN block_block -->
+                                        <option value="{VALUE}"{SELECTED}>{NAME}</option>
+                                        <!-- END block_block -->
+                                    </select>
+                                </td>
+                                <td class="d-none d-sm-table-cell">
+                                    <input type="text" class="form-control" id="namesection{VAR_SECTION_ID}" name="namesection{VAR_SECTION_ID}" value="{NAMESECTION}" />
+                                </td>
+                                <td class="d-none d-xl-table-cell">
+                                    <div class="input-group date datetimepicker">
+                                        <input type="text" name="start_date{VAR_SECTION_ID}" value="{VALUE_PUBL_START}" class="form-control" />
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-fw fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="d-none d-xl-table-cell">
+                                    <div class="input-group date datetimepicker">
+                                        <input type="text" name="end_date{VAR_SECTION_ID}" value="{VALUE_PUBL_END}"  class="form-control"/>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="fa fa-fw fa-calendar"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="d-none d-xl-table-cell">{VAR_MOVE_UP_URL}</td>
+                                <td class="d-none d-xl-table-cell">{VAR_MOVE_DOWN_URL}</td>
+                                <td class="d-none d-sm-table-cell">
+                                    <a href="#" onclick="javascript: confirm_link('{TEXT_ARE_YOU_SURE}', '{ADMIN_URL}/pages/sections.php?page_id={PAGE_IDKEY}&amp;section_id={VAR_SECTION_IDKEY}');">
+                                        <img src="{THEME_URL}/images/{DELETE_16_PNG}" alt="{TEXT_DELETE}" width="16" height="16" />
+                                    </a>
+                                </td>
+                                <td class="d-none d-sm-table-cell">{VAR_SECTION_ID}</td>
+                            </tr>
+                            <!-- END section_block -->
+                        </tbody>
+                    </table>
+
+                    <div class="card-body">
+                        <button class="btn btn-primary" name="save" type="submit"><i class="fa fa-fw fa-floppy-o"></i> {TEXT_SAVE}</button>
+						<button  class="btn btn-primary" type="submit" value="saveandback" name="saveandback"><i class="fa fa-fw fa-check"></i> {TEXT_SAVE} &amp;  {TEXT_BACK}</button>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="col-lg-4 col-xl-3">
+
+            <div class="card">
+                <h4 class="card-header">
+                    {TEXT_ADD_SECTION}
+                </h4>
+                <div class="card-body">
+
+                    <form name="add" action="{ADMIN_URL}/pages/sections.php?page_id={PAGE_IDKEY}" method="post">
+                        <input type="hidden" name="page_id" value="{PAGE_IDKEY}"  />
+                        {FTAN}
+
+                        <div class="form-group">
+                            <select name="module" class="input_large">
+                                <!-- BEGIN module_block -->
+                                <option value="{VALUE}"{SELECTED}>{NAME}</option>
+                                <!-- END module_block -->
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" name="submit" type="submit"><i class="fa fa-fw fa-plus"></i> {TEXT_ADD}</button>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!-- /#pagesPage -->
+
+<!-- Custom Javascript -->
+<script>
+
+    // Output fixes
+    $(function () {
+        JsAdmin.DD.addMoveButton = function (tr, cell, op) {
+            console.log('asd');
+            if (op == 'down') {
+                cell++;
+            }
+            var item = JsAdmin.movable_rows[tr.id];
+            if (!JsAdmin.util.isNodeType(tr, 'tr')) {
+                var rows = tr.getElementsByTagName('tr');
+                tr = rows[0];
+            }
+
+            var html = '<a href="' + item.url + 'move_' + op + '.php' + item.params
+                    + '"><i class="fa fa-fw fa-arrow-circle-' + op
+                    + '"></i></a>';
+            tr.cells[cell].innerHTML = html;
+        };
+
+
+        JsAdmin.DD.deleteMoveButton = function (tr, cell, op) {
+            console.log('asd1');
+            if (op == 'down') {
+                cell++;
+            }
+            if (!JsAdmin.util.isNodeType(tr, 'tr')) {
+                var rows = tr.getElementsByTagName('tr');
+                tr = rows[0];
+            }
+
+            tr.cells[cell].innerHTML = '';
+        };
+
+        JsAdmin.DD.trDDSwap.prototype.endDrag = function (e) {
+            YAHOO.util.Dom.setStyle(this.getEl(), "opacity", this.opacity);
+            //  YAHOO.util.Dom.setStyle(this.getEl(), "background", "#f0f0f0");
+
+            JsAdmin.DD.dragee = null;
+
+            var newIndex = this.getEl().rowIndex;
+            if (newIndex != this.rowIndex) {
+                var url = JsAdmin.WB_URL + "/modules/jsadmin/move_to.php";
+                url += JsAdmin.movable_rows[this.getEl().id].params + "&position=" + newIndex;
+                document.body.className = String(document.body.className).replace(/(\s*)jsadmin_([a-z]+)/g, "$1") + " jsadmin_busy";
+                YAHOO.util.Connect.asyncRequest('GET', url, this, null);
+            }
+        };
+
+        JsAdmin.DD.trDDSwap.prototype.onDragEnter = function (e, id) {
+            var elt = id ? YAHOO.util.Dom.get(id) : null;
+            var item = JsAdmin.movable_rows[this.getEl().id];
+            var rows = item.tr.parentNode.rows;
+            var wasFirst = item.tr.rowIndex == 1;
+            var wasLast = item.tr.rowIndex == this.numRows;
+
+            if (elt.rowIndex < item.tr.rowIndex) {
+                elt.parentNode.insertBefore(item.tr, elt);
+            } else {
+                elt.parentNode.insertBefore(elt, item.tr);
+            }
+            // Fixup buttons
+            var isFirst = item.tr.rowIndex == 1;
+            var isLast = item.tr.rowIndex == this.numRows;
+
+            if (wasFirst != isFirst) {
+                if (isFirst) {
+                    JsAdmin.DD.deleteMoveButton(item.tr, this.buttonCell, 'up');
+                    JsAdmin.DD.addMoveButton(JsAdmin.util.getNextSiblingNode(item.tr), this.buttonCell, 'up');
+                } else {
+                    JsAdmin.DD.addMoveButton(item.tr, this.buttonCell, 'up');
+                    JsAdmin.DD.deleteMoveButton(rows[0], this.buttonCell, 'up');
+                }
+            }
+            if (wasLast != isLast) {
+                if (isLast) {
+                    JsAdmin.DD.deleteMoveButton(item.tr, this.buttonCell, 'down');
+                    JsAdmin.DD.addMoveButton(JsAdmin.util.getPreviousSiblingNode(item.tr), this.buttonCell, 'down');
+                } else {
+                    JsAdmin.DD.addMoveButton(item.tr, this.buttonCell, 'down');
+                    JsAdmin.DD.deleteMoveButton(rows[rows.length - 1], this.buttonCell, 'down');
+                }
+            }
+
+            this.DDM.refreshCache(this.groups);
+        };
+    });
+</script>
+
+
+<!-- END main_block -->
+
