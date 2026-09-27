@@ -76,6 +76,9 @@
 //  conventions (camelCase). Old method names are still fully supported through 
 //  automatic mapping for backward compatibility.
 
+// Some legacy configuration files include this class directly while the modern
+// registry autoloader resolves it as well. Loading either path twice must stay harmless.
+if (!class_exists('Settings', false)) {
 class Settings
 {
     /** @var array Cached settings for fast access — stores raw DB values */
@@ -784,4 +787,5 @@ class Settings
         return null;
     }
 
+}
 }

@@ -74,6 +74,14 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.211
+
+- Verhindert den Abbruch der Update-Vorbereitung durch eine doppelte Deklaration der Framework-Klasse `Settings`, wenn eine ältere Konfiguration und der Klassenlader dieselbe Datei laden.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.210
 
 - Aktualisiert den Updater: Zusätzliche PHP-Hinweise vor der Streaming-Antwort brechen ein Vollupdate nicht mehr ab. Falls keine gültige Bestätigung folgt, zeigt der Updater die relevante Serverausgabe an.
