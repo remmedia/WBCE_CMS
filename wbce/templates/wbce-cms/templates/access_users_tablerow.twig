@@ -30,11 +30,11 @@
                  style="width:16px; vertical-align:middle"/>
         </span>
         {% if has_permission('users_modify') and rec.user_id > 1 %}
-            <a href="{{ ADMIN_URL }}/users/index.php?user_id={{ IDKEY }}&modify=1"
-               hx-get="{{ ADMIN_URL }}/users/form.php?user_id={{ IDKEY }}"
+            <a href="{{ ADMIN_URL }}/users/index.php?user_id={{ rec.user_id }}&modify=1"
+               hx-get="{{ ADMIN_URL }}/users/form.php?user_id={{ rec.user_id }}"
                hx-target="#user-form-panel"
                hx-swap="innerHTML"
-               hx-push-url="{{ ADMIN_URL }}/users/index.php?user_id={{ IDKEY }}&modify=1"
+               hx-push-url="{{ ADMIN_URL }}/users/index.php?user_id={{ rec.user_id }}&modify=1"
                title="{{ L_('TEXT:MODIFY') }} {{ L_('TEXT:USER') }}">{{ rec.display_name }}</a>
         {% else %}
             <b>{{ rec.display_name }}</b>
@@ -92,8 +92,8 @@
                 <i class="fa fa-1x fa-user-circle{% if rec.active %}-o{% endif %}"
                    style="color:{% if rec.active %}#48BF40{% else %}#EDABAB{% endif %}"></i>
             </a>
-            <a href="{{ ADMIN_URL }}/users/index.php?user_id={{ IDKEY }}&modify=1"
-               hx-get="{{ ADMIN_URL }}/users/form.php?user_id={{ IDKEY }}"
+            <a href="{{ ADMIN_URL }}/users/index.php?user_id={{ rec.user_id }}&modify=1"
+               hx-get="{{ ADMIN_URL }}/users/form.php?user_id={{ rec.user_id }}"
                hx-target="#user-form-panel"
                hx-swap="innerHTML"
                title="{{ L_('TEXT:HEADING_MODIFY_USER') }}">

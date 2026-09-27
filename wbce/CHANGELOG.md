@@ -74,6 +74,14 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.208
+
+- Öffnet die Bearbeitungsformulare für Benutzer und Gruppen über die interne Kennung. Dadurch ist das Anzeigen und Bearbeiten unabhängig vom fehlerhaften Legacy-IDKEY-Cache möglich; jede Seite prüft weiterhin die jeweilige Backend-Berechtigung.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.207
 
 - Stellt die Bearbeitung und Anzeige von Benutzern und Gruppen wieder her: Die Links erzeugen ihre Kennungen im aktuellen Backend-Kontext, sodass die HTMX-Formulare sie zuverlässig öffnen können.

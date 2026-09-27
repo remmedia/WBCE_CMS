@@ -116,8 +116,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($isNew) {
         $admin = new Admin('Access', 'groups_add', false);
     } else {
-        $admin   = new Admin('Access', 'groups_modify', false);
-        $groupId = intval($admin->checkIDKEY('group_id', 0, 'GET', true));
+        $admin = new Admin('Access', 'groups_modify', false);
+        // Form display is protected by groups_modify. A numeric ID avoids a
+        // dependency on the legacy per-session IDKEY cache for read access.
+        $requestedId = (string) ($_GET['group_id'] ?? '');
+        $groupId = ctype_digit($requestedId)
+            ? (int) $requestedId
+            : (int) $admin->checkIDKEY('group_id', 0, 'GET', true);
 
         if ($groupId < 2) {
             $alerts->error($MESSAGE['GENERIC_SECURITY_ACCESS']);

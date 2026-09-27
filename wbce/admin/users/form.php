@@ -150,8 +150,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($isAdd) {
         $admin = new Admin('Access', 'users_add', false);
     } else {
-        $admin  = new Admin('Access', 'users_modify', false);
-        $userId = intval($admin->checkIDKEY('user_id', 0, 'GET', true));
+        $admin = new Admin('Access', 'users_modify', false);
+        // Viewing an editable form does not change data. Accept the internal ID
+        // here so a page can reliably open the form even when legacy IDKEY
+        // session state is unavailable; the backend permission was checked above.
+        $requestedId = (string) ($_GET['user_id'] ?? '');
+        $userId = ctype_digit($requestedId)
+            ? (int) $requestedId
+            : (int) $admin->checkIDKEY('user_id', 0, 'GET', true);
 
         if ($userId < 2) {
             http_response_code(422);

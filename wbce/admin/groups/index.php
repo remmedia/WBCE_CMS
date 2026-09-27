@@ -78,7 +78,7 @@ $toTwig = [
     'MESSAGE_BOX'      => $alerts->render(),
     'TABS'             => renderAddonsTabs($sPos),
     'groups'           => $allGroups,
-    'GROUP_ID'         => (isset($_GET['group_id']) && isset($_GET['modify'])) ? intval($admin->checkIDKEY('group_id', 0, 'GET', true)) : 0,
+    'GROUP_ID'         => (isset($_GET['group_id']) && isset($_GET['modify'])) ? (ctype_digit((string) $_GET['group_id']) ? (int) $_GET['group_id'] : (int) $admin->checkIDKEY('group_id', 0, 'GET', true)) : 0,
 ];
 
 if (isset($_GET['duplicated'])) {

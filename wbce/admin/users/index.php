@@ -72,8 +72,11 @@ $isModifyView = false;
 $modifyUserId = 0;
 
 if (isset($_GET['user_id']) && isset($_GET['modify'])) {
-    $admin        = new Admin('Access', 'users_modify', false);
-    $modifyUserId = intval($admin->checkIDKEY('user_id', 0, 'GET', true));
+    $admin = new Admin('Access', 'users_modify', false);
+    $requestedId = (string) ($_GET['user_id'] ?? '');
+    $modifyUserId = ctype_digit($requestedId)
+        ? (int) $requestedId
+        : (int) $admin->checkIDKEY('user_id', 0, 'GET', true);
 
     if ($modifyUserId >= 2) {
         $isModifyView = true;
