@@ -9,6 +9,12 @@
  */
 
 require '../../config.php';
+require_once WB_PATH . '/framework/i18n/init.php';
+require_once WB_PATH . '/framework/Alerts.php';
+require_once WB_PATH . '/framework/AccessManager/UserManager.php';
+require_once ADMIN_PATH . '/access/functions.php';
+require_once ADMIN_PATH . '/interface/timezones.php';
+require_once ADMIN_PATH . '/interface/languages.php';
 
 // Non-htmx fallback
 if (empty($_SERVER['HTTP_HX_REQUEST'])) {
@@ -22,9 +28,6 @@ if (empty($_SERVER['HTTP_HX_REQUEST'])) {
 
 $users   = new UserManager();
 $alerts = new Alerts(useSession: false);
-
-require_once ADMIN_PATH . '/interface/timezones.php';
-require_once ADMIN_PATH . '/interface/languages.php';
 
 $isAdd     = false;
 $userId    = 0;

@@ -74,6 +74,14 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.204
+
+- Lädt die Klassen der Benutzer- und Gruppenverwaltung auch in den asynchronen Formular-Endpunkten. Die Formulare zum Hinzufügen lassen sich dadurch wieder öffnen.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.203
 
 - Lädt in der Benutzer- und Gruppenverwaltung die benötigten Bedienkomponenten wieder über den korrekten Include-Pfad. Dadurch öffnen die Schaltflächen zum Hinzufügen wieder ihre Formulare.

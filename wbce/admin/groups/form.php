@@ -9,7 +9,11 @@
  */
 
 require '../../config.php';
-require ADMIN_PATH . '/access/functions.php';
+require_once WB_PATH . '/framework/i18n/init.php';
+require_once WB_PATH . '/framework/Alerts.php';
+require_once WB_PATH . '/framework/AccessManager/GroupManager.php';
+require_once WB_PATH . '/framework/AccessManager/PermissionManager.php';
+require_once ADMIN_PATH . '/access/functions.php';
 Lang::loadLanguage(__DIR__);
 
 // Non-htmx fallback
