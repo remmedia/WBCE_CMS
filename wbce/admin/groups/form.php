@@ -17,7 +17,7 @@ require_once ADMIN_PATH . '/access/functions.php';
 Lang::loadLanguage(__DIR__);
 
 // Non-htmx fallback
-if (!MessageBox::isHtmx()) {
+if (empty($_SERVER['HTTP_HX_REQUEST'])) {
     $redirect = ADMIN_URL . '/groups/';
     if (isset($_GET['group_id'])) {
         $redirect .= 'index.php?group_id=' . urlencode($_GET['group_id']) . '&modify=1';

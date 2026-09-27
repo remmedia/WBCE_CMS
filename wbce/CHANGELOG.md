@@ -74,6 +74,14 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.206
+
+- Korrigiert die HTMX-Erkennung im Gruppenformular. Die Schaltfläche zum Hinzufügen einer Gruppe öffnet das Formular wieder.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.205
 
 - Stellt die fehlenden Verzeichnisfunktionen wieder bereit, die das Benutzerformular für die Auswahl eines Medienordners benötigt. Dadurch endet das Öffnen des Formulars nicht mehr mit HTTP 500.
