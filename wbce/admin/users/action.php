@@ -14,7 +14,7 @@ $alerts = new Alerts(useSession: false);
 $userId = intval($admin->checkIDKEY('user_id', 0, 'GET', true));
 
 // Non-htmx fallback
-if (!MessageBox::isHtmx()) {
+if (!Alerts::isHtmx()) {
     $param = ($action === 'delete') ? 'delete' : 'activation';
     header('Location: ' . ADMIN_URL . '/users/index.php?user_id=' . urlencode($_GET['user_id'] ?? '') . '&' . $param . '=1');
     exit;

@@ -74,6 +74,15 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.207
+
+- Stellt die Bearbeitung und Anzeige von Benutzern und Gruppen wieder her: Die Links erzeugen ihre Kennungen im aktuellen Backend-Kontext, sodass die HTMX-Formulare sie zuverlässig öffnen können.
+- Korrigiert die HTMX-Erkennung in den Benutzer- und Gruppenaktionen.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.206
 
 - Korrigiert die HTMX-Erkennung im Gruppenformular. Die Schaltfläche zum Hinzufügen einer Gruppe öffnet das Formular wieder.

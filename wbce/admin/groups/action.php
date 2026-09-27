@@ -15,7 +15,7 @@ $alerts = new Alerts(useSession: false);
 $groupId = intval($admin->checkIDKEY('group_id', 0, 'GET', true));
 
 // Non-htmx fallback
-if (!MessageBox::isHtmx()) {
+if (!Alerts::isHtmx()) {
     header('Location: ' . ADMIN_URL . '/groups/index.php?group_id=' . urlencode($_GET['group_id'] ?? '') . '&delete=1');
     exit;
 }

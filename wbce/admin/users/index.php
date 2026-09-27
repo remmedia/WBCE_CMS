@@ -21,6 +21,9 @@ require_once ADMIN_PATH . '/interface/languages.php';
 
 $sPos         = 'users';
 $admin        = new Admin('Access', $sPos, false);
+// Twig creates IDKEYs through the legacy global engine. It must be this
+// authenticated backend instance so the htmx endpoints can redeem them.
+$GLOBALS['wb'] = $admin;
 $alerts       = new Alerts();
 $users        = new UserManager();
 $isSuperAdmin = $admin->isAdmin();

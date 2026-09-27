@@ -66,6 +66,10 @@ switch ($action) {
         $admin = new Admin('Access', $sPos);
 }
 
+// Twig creates IDKEYs through the legacy global engine. Keep it aligned with
+// the authenticated backend context which receives the htmx request.
+$GLOBALS['wb'] = $admin;
+
 // --- Build group list ---
 $allGroups = $groups->getAllGroups();
 
