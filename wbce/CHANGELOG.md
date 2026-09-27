@@ -74,6 +74,15 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.210
+
+- Aktualisiert den Updater: Zusätzliche PHP-Hinweise vor der Streaming-Antwort brechen ein Vollupdate nicht mehr ab. Falls keine gültige Bestätigung folgt, zeigt der Updater die relevante Serverausgabe an.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+- Updater
+
 ## 1.7.0-dev.209
 
 - Korrigiert das Rendern des Benutzerformulars für moderne Zeitzonenbezeichner wie `Europe/Berlin`; das Öffnen und Anzeigen eines Benutzers endet nicht mehr mit HTTP 500.
