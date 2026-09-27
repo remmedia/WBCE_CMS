@@ -119,6 +119,9 @@ function wbce_module_upgrade_required(string $directory): bool
 
 function wbce_run_module_upgrade(string $directory): void
 {
+    // upgrade.php is included in this function's scope. Make the legacy
+    // variables expected by add-on upgrades available there as well.
+    global $database, $OK, $FAIL, $SIGNAL;
     $upgradeFile = WB_PATH . '/modules/' . $directory . '/upgrade.php';
     if (!is_file($upgradeFile)) return;
     if (!wbce_module_upgrade_required($directory)) {

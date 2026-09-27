@@ -74,6 +74,14 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.212
+
+- Stellt bei Kernmodul-Upgrades den Datenbank- und Statuskontext bereit. Dadurch kann das Droplets-Upgrade seine Datenbankfelder aktualisieren, ohne mit einer leeren Datenbankvariable abzubrechen.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.211
 
 - Verhindert den Abbruch der Update-Vorbereitung durch eine doppelte Deklaration der Framework-Klasse `Settings`, wenn eine ältere Konfiguration und der Klassenlader dieselbe Datei laden.
