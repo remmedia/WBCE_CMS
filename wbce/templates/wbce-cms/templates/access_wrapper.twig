@@ -12,7 +12,7 @@
     {% endblock %}
     </div>
 </section>
-{{  insertJsFile(WB_URL ~ '/include/htmx/htmx.min.js')}}
-{{ insertCssFile(WB_URL ~ '/include/wbeSelect/wbeSelect.css') }}
-{{ insertJsFile(WB_URL ~ '/include/wbeSelect/wbeSelect.js') }}
+{{ insertJsFile(INCLUDE_URL ~ '/htmx/htmx.min.js') }}
+{{ insertCssFile(INCLUDE_URL ~ '/wbeSelect/wbeSelect.css') }}
+{{ insertJsFile(INCLUDE_URL ~ '/wbeSelect/wbeSelect.js') }}
 {% include '_toast.inc.twig' %}

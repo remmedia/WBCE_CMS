@@ -74,6 +74,14 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.203
+
+- Lädt in der Benutzer- und Gruppenverwaltung die benötigten Bedienkomponenten wieder über den korrekten Include-Pfad. Dadurch öffnen die Schaltflächen zum Hinzufügen wieder ihre Formulare.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.189
 
 - Wählt bei Neuinstallationen **WBCE CMS** als Admin-Theme und **MEDIA Horizon** als Frontend-Template.
