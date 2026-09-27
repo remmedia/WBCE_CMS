@@ -74,6 +74,14 @@
 
 - WBCE CMS-Kernpaket
 
+## 1.7.0-dev.205
+
+- Stellt die fehlenden Verzeichnisfunktionen wieder bereit, die das Benutzerformular für die Auswahl eines Medienordners benötigt. Dadurch endet das Öffnen des Formulars nicht mehr mit HTTP 500.
+
+### Aktualisierte Pakete
+
+- WBCE CMS-Kernpaket
+
 ## 1.7.0-dev.204
 
 - Lädt die Klassen der Benutzer- und Gruppenverwaltung auch in den asynchronen Formular-Endpunkten. Die Formulare zum Hinzufügen lassen sich dadurch wieder öffnen.

@@ -2019,3 +2019,80 @@ function wbce_revoke_user_sessions($userId, $keepSessionId = '')
     }
     return !$database->is_error();
 }
+
+/** Return all visible directories below a base path as sorted relative paths. */
+function directoriesList(string $dir, bool $showHidden = false): array
+{
+    $dir = rtrim($dir, '/\\');
+    if (!is_dir($dir) || !is_readable($dir)) {
+        return [];
+    }
+
+    $iterator = new RecursiveIteratorIterator(
+        new RecursiveCallbackFilterIterator(
+            new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS | RecursiveDirectoryIterator::UNIX_PATHS),
+            static function (SplFileInfo $entry) use ($showHidden): bool {
+                return $entry->isDir() && ($showHidden || !str_starts_with($entry->getBasename(), '.'));
+            }
+        ),
+        RecursiveIteratorIterator::SELF_FIRST
+    );
+
+    $directories = [];
+    foreach ($iterator as $entry) {
+        $directories[] = substr($entry->getPathname(), strlen($dir));
+    }
+    natcasesort($directories);
+    return array_values($directories);
+}
+
+/** Convert sorted relative directory paths into a nested tree. */
+function directoriesTree(array $directories): array
+{
+    $tree = [];
+    foreach ($directories as $path) {
+        $cursor = &$tree;
+        $built = '';
+        foreach (array_filter(explode('/', (string)$path)) as $name) {
+            $built .= '/' . $name;
+            $found = false;
+            foreach ($cursor as &$node) {
+                if ($node['name'] === $name) {
+                    $cursor = &$node['children'];
+                    $found = true;
+                    break;
+                }
+            }
+            unset($node);
+            if (!$found) {
+                $cursor[] = ['path' => $built, 'name' => $name, 'children' => []];
+                $cursor = &$cursor[array_key_last($cursor)]['children'];
+            }
+        }
+        unset($cursor);
+    }
+    return $tree;
+}
+
+/** Flatten a directory tree and retain its visual hierarchy for select fields. */
+function flattenTree(array $tree, callable $mapper, int $level = 0, array $continuing = [], array &$result = [], bool $connectorsFromRoot = false): array
+{
+    $items = array_values($tree);
+    foreach ($items as $index => $node) {
+        $isLast = $index === count($items) - 1;
+        $prefix = '';
+        foreach ($continuing as $continues) {
+            $prefix .= $continues ? '│  ' : '   ';
+        }
+        if ($level > 0 || $connectorsFromRoot) {
+            $prefix .= $isLast ? '└─ ' : '├─ ';
+        }
+        $result[] = $mapper($node, ['level' => $level, 'is_last' => $isLast, 'prefix' => $prefix]);
+        if (!empty($node['children'])) {
+            $next = $continuing;
+            $next[] = !$isLast;
+            flattenTree($node['children'], $mapper, $level + 1, $next, $result, $connectorsFromRoot);
+        }
+    }
+    return $result;
+}
